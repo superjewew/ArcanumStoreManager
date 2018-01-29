@@ -26,7 +26,7 @@ public class LoggedActivityModule {
     }
 
     @Provides
-    LoggedContract.Presenter providePresenter(LoggedContract.View mainView, FindUserUseCase findUserUseCase, CreateVisitUseCase createVisitUseCase){
-        return new LoggedPresenter(mainView, findUserUseCase, createVisitUseCase);
+    LoggedContract.Presenter providePresenter(LoggedContract.View mainView){
+        return new LoggedPresenter(mainView);
     }
 }

@@ -24,7 +24,7 @@ public class DashboardActivityModule {
     }
 
     @Provides
-    DashboardContract.Presenter providePresenter(DashboardContract.View mainView, GetVisitsUseCase getVisitsUseCase){
-        return new DashboardPresenter(mainView, getVisitsUseCase);
+    DashboardContract.Presenter providePresenter(DashboardContract.View mainView){
+        return new DashboardPresenter(mainView);
     }
 }

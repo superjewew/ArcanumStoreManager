@@ -21,9 +21,8 @@ public class DashboardPresenter extends BasePresenter<DashboardContract.View> im
     GetVisitsUseCase getVisitsUseCase;
 
     @Inject
-    public DashboardPresenter(DashboardContract.View view, GetVisitsUseCase getVisitsUseCase) {
+    public DashboardPresenter(DashboardContract.View view) {
         attachView(view);
-        this.getVisitsUseCase = getVisitsUseCase;
     }
 
     @Override

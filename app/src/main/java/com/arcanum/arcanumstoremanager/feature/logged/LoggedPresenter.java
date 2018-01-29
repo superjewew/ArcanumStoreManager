@@ -1,5 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.logged;
 
+import android.util.Log;
+
 import com.arcanum.arcanumstoremanager.base.BasePresenter;
 import com.arcanum.arcanumstoremanager.domain.usecase.FindUserUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.CreateVisitUseCase;
@@ -15,15 +17,15 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LoggedPresenter extends BasePresenter<LoggedContract.View> implements LoggedContract.Presenter {
 
-    private FindUserUseCase findUserUseCase;
-
-    private CreateVisitUseCase createVisitUseCase;
+    @Inject
+    FindUserUseCase findUserUseCase;
 
     @Inject
-    public LoggedPresenter(LoggedContract.View mainView, FindUserUseCase findUserUseCase, CreateVisitUseCase createVisitUseCase) {
+    CreateVisitUseCase createVisitUseCase;
+
+    @Inject
+    LoggedPresenter(LoggedContract.View mainView) {
         attachView(mainView);
-        this.findUserUseCase = findUserUseCase;
-        this.createVisitUseCase = createVisitUseCase;
     }
 
     @Override
@@ -36,7 +38,9 @@ public class LoggedPresenter extends BasePresenter<LoggedContract.View> implemen
     }
 
     private void onSuccess(Completable c) {
+        Log.d(getClass().getSimpleName(), "Visit created");
         mView.closeScreen();
+        detachView();
     }
 
     private void onFailed(Throwable throwable) {

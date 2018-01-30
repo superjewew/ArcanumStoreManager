@@ -31,7 +31,7 @@ public class VisitRepoImpl implements VisitRepository {
         return Completable.fromAction(() -> {
             Visit visit = new Visit();
             visit.setVisitTime(Calendar.getInstance().getTime());
-            visit.setVisitor(user.getName());
+            visit.setVisitor(user.getUsername());
         });
     }
 
@@ -39,7 +39,7 @@ public class VisitRepoImpl implements VisitRepository {
         List<Visit> visits = new ArrayList<>();
         Visit visit = new Visit();
         visit.setVisitTime(Calendar.getInstance().getTime());
-        visit.setVisitor("test");
+        visit.setVisitor("Full Name");
         visits.add(visit);
         return visits;
     }

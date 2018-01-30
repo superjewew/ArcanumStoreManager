@@ -36,9 +36,9 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     }
 
     private void onSuccess(User user) {
-        if(user.getName().equals(username_test)) {
-            mView.showLoggedScreen(user.getName());
-        } else if(user.getName().equals(admin_test)) {
+        if(user.getUsername().equals(username_test)) {
+            mView.showLoggedScreen(user.getUsername());
+        } else if(user.getUsername().equals(admin_test)) {
             mView.showAdminScreen();
         } else {
             mView.showRegisterScreen();

@@ -1,25 +1,32 @@
 package com.arcanum.arcanumstoremanager.domain.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by norman on 24/01/18.
  */
 
 public class User {
-    private String name;
+    private String username;
+    private String fullname;
     private String email;
     private String phone;
     private Date dob;
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getEmail() {

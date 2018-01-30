@@ -54,7 +54,7 @@ public class UserRepoImpl implements UserRepository {
 
     private User dummyUserFromEmail(String name) {
         User user = dummyUser();
-        user.setName(name);
+        user.setUsername(name);
         return user;
     }
 }

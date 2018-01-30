@@ -2,7 +2,7 @@ package com.arcanum.arcanumstoremanager.feature.login;
 
 import com.arcanum.arcanumstoremanager.base.BasePresenter;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
-import com.arcanum.arcanumstoremanager.domain.usecase.FindUserUseCase;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
 
 import javax.inject.Inject;
 
@@ -19,17 +19,17 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     private String admin_test = "admin";
     private String password_test = "1234";
 
-    private FindUserUseCase findUserUseCase;
+    private GetUserUseCase getUserUseCase;
 
     @Inject
-    LoginPresenter(LoginContract.View view, FindUserUseCase findUserUseCase) {
+    LoginPresenter(LoginContract.View view, GetUserUseCase getUserUseCase) {
         attachView(view);
-        this.findUserUseCase = findUserUseCase;
+        this.getUserUseCase = getUserUseCase;
     }
 
     @Override
     public void attemptLogin(String email, String password) {
-        findUserUseCase.execute(email)
+        getUserUseCase.execute(email)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onSuccess, this::onFailed);

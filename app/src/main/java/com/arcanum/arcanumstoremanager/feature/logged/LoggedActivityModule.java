@@ -1,7 +1,5 @@
 package com.arcanum.arcanumstoremanager.feature.logged;
 
-import com.arcanum.arcanumstoremanager.domain.usecase.CreateVisitUseCase;
-import com.arcanum.arcanumstoremanager.domain.usecase.FindUserUseCase;
 import com.arcanum.arcanumstoremanager.feature.RouterImpl;
 import com.arcanum.arcanumstoremanager.base.Router;
 

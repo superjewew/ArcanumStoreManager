@@ -3,7 +3,7 @@ package com.arcanum.arcanumstoremanager.feature.logged;
 import android.util.Log;
 
 import com.arcanum.arcanumstoremanager.base.BasePresenter;
-import com.arcanum.arcanumstoremanager.domain.usecase.FindUserUseCase;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.CreateVisitUseCase;
 
 import javax.inject.Inject;
@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 public class LoggedPresenter extends BasePresenter<LoggedContract.View> implements LoggedContract.Presenter {
 
     @Inject
-    FindUserUseCase findUserUseCase;
+    GetUserUseCase getUserUseCase;
 
     @Inject
     CreateVisitUseCase createVisitUseCase;
@@ -30,7 +30,7 @@ public class LoggedPresenter extends BasePresenter<LoggedContract.View> implemen
 
     @Override
     public void updateVisit(String username) {
-        findUserUseCase.execute(username)
+        getUserUseCase.execute(username)
                 .map(user -> createVisitUseCase.execute(user))
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())

@@ -1,6 +1,6 @@
 package com.arcanum.arcanumstoremanager.feature.login;
 
-import com.arcanum.arcanumstoremanager.domain.usecase.FindUserUseCase;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
 import com.arcanum.arcanumstoremanager.feature.RouterImpl;
 import com.arcanum.arcanumstoremanager.base.Router;
 
@@ -25,7 +25,7 @@ public class LoginActivityModule {
     }
 
     @Provides
-    LoginContract.Presenter provideMainPresenter(LoginContract.View mainView, FindUserUseCase useCase){
+    LoginContract.Presenter provideMainPresenter(LoginContract.View mainView, GetUserUseCase useCase){
         return new LoginPresenter(mainView, useCase);
     }
 }

@@ -12,12 +12,12 @@ import io.reactivex.Single;
  * Created by norman on 29/01/18.
  */
 
-public class FindUserUseCase implements BaseUseCaseWithParam<String, User> {
+public class GetUserUseCase implements BaseUseCaseWithParam<String, User> {
 
     private UserRepository repository;
 
     @Inject
-    public FindUserUseCase(UserRepository repository) {
+    public GetUserUseCase(UserRepository repository) {
         this.repository = repository;
     }
 

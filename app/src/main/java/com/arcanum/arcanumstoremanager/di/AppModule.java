@@ -11,7 +11,7 @@ import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.domain.repo.UserRepository;
 import com.arcanum.arcanumstoremanager.domain.repo.VisitRepository;
 import com.arcanum.arcanumstoremanager.domain.usecase.CreateVisitUseCase;
-import com.arcanum.arcanumstoremanager.domain.usecase.FindUserUseCase;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.RegisterUseCase;
 
@@ -54,7 +54,7 @@ public abstract class AppModule {
     @Provides
     @Singleton
     static BaseUseCaseWithParam<String, User> provideLoginUseCase(UserRepository repository) {
-        return new FindUserUseCase(repository);
+        return new GetUserUseCase(repository);
     }
 
     @Provides

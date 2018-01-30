@@ -53,4 +53,37 @@ public class User {
         this.dob = dob;
     }
 
+    public static class Builder {
+        User user = new User();
+
+        public Builder username(String username) {
+            user.setUsername(username);
+            return this;
+        }
+
+        public Builder fullname(String fullname) {
+            user.setFullname(fullname);
+            return this;
+        }
+
+        public Builder email(String email) {
+            user.setEmail(email);
+            return this;
+        }
+
+        public Builder phone(String phone) {
+            user.setPhone(phone);
+            return this;
+        }
+
+        public Builder dob(Date dob) {
+            user.setDob(dob);
+            return this;
+        }
+
+        public User build() {
+            return user;
+        }
+    }
+
 }

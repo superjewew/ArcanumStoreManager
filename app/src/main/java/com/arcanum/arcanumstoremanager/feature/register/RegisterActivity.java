@@ -1,6 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.register;
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,6 +23,21 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
     @ViewById(R.id.register_button)
     Button registerButton;
 
+    @ViewById(R.id.username)
+    TextInputEditText usernameEt;
+
+    @ViewById(R.id.fullname)
+    TextInputEditText fullnameEt;
+
+    @ViewById(R.id.email)
+    TextInputEditText emailEt;
+
+    @ViewById(R.id.phone)
+    TextInputEditText phoneEt;
+
+    @ViewById(R.id.dob)
+    TextInputEditText dobEt;
+
     @Inject
     RegisterContract.Presenter mPresenter;
 
@@ -35,7 +51,7 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
 
     @Override
     public void showLoggedScreen() {
-        mRouter.showLoggedScreen("test");
+        mRouter.showLoggedScreen(usernameEt.getText().toString());
         mRouter.closeScreen();
     }
 
@@ -46,6 +62,16 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
 
     @Click(R.id.register_button)
     public void onRegisterClicked() {
-        mPresenter.registerUser(new User());
+        User user = createUserFromField();
+        mPresenter.registerUser(user);
+    }
+
+    private User createUserFromField() {
+        return new User.Builder()
+                .username(usernameEt.getText().toString())
+                .fullname(fullnameEt.getText().toString())
+                .email(emailEt.getText().toString())
+                .phone(phoneEt.getText().toString())
+                .build();
     }
 }

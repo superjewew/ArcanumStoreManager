@@ -24,7 +24,8 @@
         </activity>
         <activity android:name=".feature.register.RegisterActivity_" />
         <activity android:name=".feature.logged.LoggedActivity_" />
-        <activity android:name=".feature.dashboard.DashboardActivity_"/>
+        <activity android:name=".feature.dashboard.DashboardActivity_" />
+        <activity android:name=".feature.attendance.AttendanceActivity_"></activity>
     </application>
 
 </manifest>

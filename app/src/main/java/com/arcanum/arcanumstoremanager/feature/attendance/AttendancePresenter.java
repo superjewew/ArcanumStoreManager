@@ -21,8 +21,9 @@ public class AttendancePresenter extends BasePresenter<AttendanceContract.View> 
     GetVisitsUseCase getVisitsUseCase;
 
     @Inject
-    AttendancePresenter(AttendanceContract.View mainView) {
+    AttendancePresenter(AttendanceContract.View mainView, GetVisitsUseCase useCase) {
         attachView(mainView);
+        getVisitsUseCase = useCase;
     }
 
     @Override

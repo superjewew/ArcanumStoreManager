@@ -27,5 +27,6 @@ public abstract class BaseRecyclerViewAdapter <T, V extends View> extends Recycl
 
     protected abstract V onCreateItemView(ViewGroup parent, int viewType);
 
+    protected abstract void initItems(List<T> items);
     // additional methods to manipulate the items
 }

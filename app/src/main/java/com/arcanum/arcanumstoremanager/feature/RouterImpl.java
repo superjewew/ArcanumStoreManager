@@ -3,6 +3,7 @@ package com.arcanum.arcanumstoremanager.feature;
 import android.app.Activity;
 
 import com.arcanum.arcanumstoremanager.base.Router;
+import com.arcanum.arcanumstoremanager.feature.attendance.AttendanceActivity_;
 import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardActivity_;
 import com.arcanum.arcanumstoremanager.feature.logged.LoggedActivity_;
 import com.arcanum.arcanumstoremanager.feature.register.RegisterActivity_;
@@ -41,7 +42,7 @@ public class RouterImpl implements Router {
 
     @Override
     public void showVisitsScreen() {
-
+        AttendanceActivity_.intent(activity).start();
     }
 
     @Override

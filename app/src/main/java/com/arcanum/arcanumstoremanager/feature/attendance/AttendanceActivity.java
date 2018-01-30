@@ -1,6 +1,8 @@
 package com.arcanum.arcanumstoremanager.feature.attendance;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.arcanum.arcanumstoremanager.R;
@@ -8,6 +10,7 @@ import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
 
@@ -18,8 +21,13 @@ import dagger.android.support.DaggerAppCompatActivity;
 @EActivity(R.layout.activity_attendance)
 public class AttendanceActivity extends DaggerAppCompatActivity implements AttendanceContract.View {
 
+    @ViewById(R.id.attendance_list)
+    RecyclerView attendanceList;
+
     @Inject
     AttendanceContract.Presenter presenter;
+
+    private AttendanceAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +36,7 @@ public class AttendanceActivity extends DaggerAppCompatActivity implements Atten
 
     @AfterViews
     public void initAfterViews() {
+        attendanceList.setLayoutManager(new LinearLayoutManager(this));
         presenter.getAttendance();
     }
 
@@ -38,6 +47,8 @@ public class AttendanceActivity extends DaggerAppCompatActivity implements Atten
 
     @Override
     public void updateAdapter(List<Visit> visits) {
-
+        adapter = AttendanceAdapter_.getInstance_(this);
+        adapter.initItems(visits);
+        attendanceList.setAdapter(adapter);
     }
 }

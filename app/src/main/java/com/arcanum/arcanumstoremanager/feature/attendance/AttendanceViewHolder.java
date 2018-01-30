@@ -10,6 +10,9 @@ import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /**
  * Created by norman on 30/01/18.
  */
@@ -29,6 +32,7 @@ public class AttendanceViewHolder extends ConstraintLayout {
 
     public void bindData(Visit visit) {
         nameTv.setText(visit.getVisitor());
-        timeTv.setText(visit.getVisitTime().toString());
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.US);
+        timeTv.setText(timeFormat.format(visit.getVisitTime()));
     }
 }

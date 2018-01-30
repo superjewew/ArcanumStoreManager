@@ -17,12 +17,12 @@ import io.reactivex.schedulers.Schedulers;
 
 public class DashboardPresenter extends BasePresenter<DashboardContract.View> implements DashboardContract.Presenter {
 
-    @Inject
     GetVisitsUseCase getVisitsUseCase;
 
     @Inject
-    public DashboardPresenter(DashboardContract.View view) {
+    public DashboardPresenter(DashboardContract.View view, GetVisitsUseCase useCase) {
         attachView(view);
+        getVisitsUseCase = useCase;
     }
 
     @Override

@@ -10,6 +10,8 @@ import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
+import java.util.List;
+
 /**
  * Created by norman on 30/01/18.
  */
@@ -23,6 +25,11 @@ public class AttendanceAdapter extends BaseRecyclerViewAdapter<Visit, Attendance
     @Override
     protected AttendanceViewHolder onCreateItemView(ViewGroup parent, int viewType) {
         return AttendanceViewHolder_.build(context);
+    }
+
+    @Override
+    protected void initItems(List<Visit> items) {
+        this.items = items;
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.arcanum.arcanumstoremanager.R;
 import com.arcanum.arcanumstoremanager.base.Router;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
@@ -49,6 +50,7 @@ public class DashboardActivity extends DaggerAppCompatActivity implements Dashbo
         mSalesAmountTv.setText("" + sales);
     }
 
+    @Click(R.id.visit_detail_tv)
     @Override
     public void showVisitsDetail() {
         mRouter.showVisitsScreen();

@@ -1,5 +1,7 @@
 package com.arcanum.arcanumstoremanager.di;
 
+import com.arcanum.arcanumstoremanager.feature.attendance.AttendanceActivityModule;
+import com.arcanum.arcanumstoremanager.feature.attendance.AttendanceActivity_;
 import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardActivityModule;
 import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardActivity_;
 import com.arcanum.arcanumstoremanager.feature.logged.LoggedActivityModule;
@@ -30,4 +32,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = DashboardActivityModule.class)
     abstract DashboardActivity_ bindDashboardActivity();
+
+    @ContributesAndroidInjector(modules = AttendanceActivityModule.class)
+    abstract AttendanceActivity_ bindAttendanceActivity();
 }

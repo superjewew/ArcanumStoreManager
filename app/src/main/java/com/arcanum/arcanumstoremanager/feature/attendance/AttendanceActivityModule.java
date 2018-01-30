@@ -1,6 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.attendance;
 
 import com.arcanum.arcanumstoremanager.base.Router;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsUseCase;
 import com.arcanum.arcanumstoremanager.feature.RouterImpl;
 
 import dagger.Module;
@@ -24,7 +25,7 @@ public class AttendanceActivityModule {
     }
 
     @Provides
-    AttendanceContract.Presenter providePresenter(AttendanceContract.View mainView){
-        return new AttendancePresenter(mainView);
+    AttendanceContract.Presenter providePresenter(AttendanceContract.View mainView, GetVisitsUseCase useCase){
+        return new AttendancePresenter(mainView, useCase);
     }
 }

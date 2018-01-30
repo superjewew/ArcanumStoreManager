@@ -12,6 +12,13 @@ public interface RegisterContract {
         void showLoggedScreen();
 
         void showError(String reason);
+
+        void showFormUsernameError(String message);
+
+        void showFormPasswordError(String message);
+
+        void showFormFullnameError(String message);
+
     }
 
     interface Presenter {

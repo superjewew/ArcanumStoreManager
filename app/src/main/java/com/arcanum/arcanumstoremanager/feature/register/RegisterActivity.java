@@ -2,6 +2,7 @@ package com.arcanum.arcanumstoremanager.feature.register;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -23,8 +24,20 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
     @ViewById(R.id.register_button)
     Button registerButton;
 
+    @ViewById(R.id.username_layout)
+    TextInputLayout usernameTil;
+
+    @ViewById(R.id.password_layout)
+    TextInputLayout passwordTil;
+
+    @ViewById(R.id.fullname_layout)
+    TextInputLayout fullnameTil;
+
     @ViewById(R.id.username)
     TextInputEditText usernameEt;
+
+    @ViewById(R.id.password)
+    TextInputEditText passwordEt;
 
     @ViewById(R.id.fullname)
     TextInputEditText fullnameEt;
@@ -60,6 +73,21 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
         Toast.makeText(this, reason, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void showFormUsernameError(String message) {
+        usernameTil.setError(message);
+    }
+
+    @Override
+    public void showFormPasswordError(String message) {
+        passwordTil.setError(message);
+    }
+
+    @Override
+    public void showFormFullnameError(String message) {
+        fullnameTil.setError(message);
+    }
+
     @Click(R.id.register_button)
     public void onRegisterClicked() {
         User user = createUserFromField();
@@ -69,6 +97,7 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
     private User createUserFromField() {
         return new User.Builder()
                 .username(usernameEt.getText().toString())
+                .password(passwordEt.getText().toString())
                 .fullname(fullnameEt.getText().toString())
                 .email(emailEt.getText().toString())
                 .phone(phoneEt.getText().toString())

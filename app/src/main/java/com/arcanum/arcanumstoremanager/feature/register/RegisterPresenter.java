@@ -26,10 +26,12 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
 
     @Override
     public void registerUser(User user) {
-        registerUseCase.execute(user)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onSuccess, this::onError);
+        if(isValid(user)) {
+            registerUseCase.execute(user)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::onSuccess, this::onError);
+        }
     }
 
     private void onSuccess() {
@@ -38,5 +40,31 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
 
     private void onError(final Throwable throwable) {
         mView.showError(throwable.getLocalizedMessage());
+    }
+
+    private boolean isValid(User user) {
+        boolean valid = true;
+        clearError();
+
+        if(user.getUsername().equalsIgnoreCase("")) {
+            mView.showFormUsernameError("Username tidak boleh kosong");
+            valid = false;
+        }
+        if(user.getPassword().equals("")) {
+            mView.showFormPasswordError("Password tidak boleh kosong");
+            valid = false;
+        }
+        if(user.getFullname().equals("")) {
+            mView.showFormFullnameError("Nama lengkap tidak boleh kosong");
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    private void clearError() {
+        mView.showFormUsernameError("");
+        mView.showFormPasswordError("");
+        mView.showFormFullnameError("");
     }
 }

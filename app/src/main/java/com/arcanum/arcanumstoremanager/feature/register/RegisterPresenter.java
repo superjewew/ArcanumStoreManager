@@ -47,15 +47,15 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View> impl
         clearError();
 
         if(user.getUsername().equalsIgnoreCase("")) {
-            mView.showFormUsernameError("Username tidak boleh kosong");
+            mView.showFormUsernameError("Username can't be empty");
             valid = false;
         }
         if(user.getPassword().equals("")) {
-            mView.showFormPasswordError("Password tidak boleh kosong");
+            mView.showFormPasswordError("Password can't be empty");
             valid = false;
         }
         if(user.getFullname().equals("")) {
-            mView.showFormFullnameError("Nama lengkap tidak boleh kosong");
+            mView.showFormFullnameError("Full name can't be empty");
             valid = false;
         }
 

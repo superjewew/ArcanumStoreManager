@@ -3,6 +3,8 @@ package com.arcanum.arcanumstoremanager.feature.register;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.widget.AppCompatSpinner;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -54,6 +56,9 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
     @ViewById(R.id.dob)
     TextInputEditText dobEt;
 
+    @ViewById(R.id.pass_spinner)
+    AppCompatSpinner passSpin;
+
     @Inject
     RegisterContract.Presenter mPresenter;
 
@@ -71,6 +76,10 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
     @AfterViews
     public void initAfterExtras() {
         usernameEt.setText(username);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.pass_type_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        passSpin.setAdapter(adapter);
     }
 
     @Override

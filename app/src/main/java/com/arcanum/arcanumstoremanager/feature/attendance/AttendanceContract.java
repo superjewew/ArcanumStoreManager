@@ -1,8 +1,6 @@
 package com.arcanum.arcanumstoremanager.feature.attendance;
 
-import com.arcanum.arcanumstoremanager.data.VisitDao;
 import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
-import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 
 import java.util.List;
 

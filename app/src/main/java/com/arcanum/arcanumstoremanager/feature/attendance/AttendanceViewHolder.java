@@ -5,15 +5,14 @@ import android.support.constraint.ConstraintLayout;
 import android.widget.TextView;
 
 import com.arcanum.arcanumstoremanager.R;
-import com.arcanum.arcanumstoremanager.data.VisitDao;
 import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
-import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.text.ParseException;
+
+import static com.arcanum.arcanumstoremanager.DateUtils.ConvertDateStringFormat;
 
 /**
  * Created by norman on 30/01/18.
@@ -38,6 +37,11 @@ public class AttendanceViewHolder extends ConstraintLayout {
     public void bindData(VisitWithName visit) {
         nameTv.setText(visit.username);
         fullnameTv.setText(visit.fullname);
-        timeTv.setText(visit.visittime);
+
+        try {
+            timeTv.setText(ConvertDateStringFormat(visit.visittime, "d MMM HH:mm"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

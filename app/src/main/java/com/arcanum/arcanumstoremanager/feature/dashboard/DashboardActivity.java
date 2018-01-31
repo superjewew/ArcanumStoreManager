@@ -1,6 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.dashboard;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -16,6 +17,9 @@ import org.androidannotations.annotations.ViewById;
 import javax.inject.Inject;
 
 import dagger.android.support.DaggerAppCompatActivity;
+
+import static com.arcanum.arcanumstoremanager.feature.dashboard.DashboardContract.VisitFilterType.TODAY;
+import static com.arcanum.arcanumstoremanager.feature.dashboard.DashboardContract.VisitFilterType.WEEKLY;
 
 @EActivity(R.layout.activity_dashboard)
 public class DashboardActivity extends DaggerAppCompatActivity implements DashboardContract.View {
@@ -39,7 +43,11 @@ public class DashboardActivity extends DaggerAppCompatActivity implements Dashbo
 
     @AfterViews
     public void initAfterViews() {
-        mPresenter.loadData();
+        ActionBar bar = getSupportActionBar();
+        if(bar != null) {
+            bar.setTitle("Dashboard");
+        }
+        mPresenter.loadData(TODAY);
     }
 
     @Override
@@ -53,6 +61,12 @@ public class DashboardActivity extends DaggerAppCompatActivity implements Dashbo
         switch (item.getItemId()) {
             case R.id.menu_account:
                 mRouter.showAccountsScreen();
+                return true;
+            case R.id.menu_sort_today:
+                mPresenter.loadData(TODAY);
+                return true;
+            case R.id.menu_sort_weekly:
+                mPresenter.loadData(WEEKLY);
                 return true;
         }
 

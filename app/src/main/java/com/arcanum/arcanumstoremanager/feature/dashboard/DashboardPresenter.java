@@ -4,8 +4,12 @@ import com.arcanum.arcanumstoremanager.base.BasePresenter;
 import com.arcanum.arcanumstoremanager.data.VisitDao;
 import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
 import com.arcanum.arcanumstoremanager.domain.entity.Visit;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsBetweenDateUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsUseCase;
+import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardContract.VisitFilterType;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,24 +23,74 @@ import io.reactivex.schedulers.Schedulers;
 
 public class DashboardPresenter extends BasePresenter<DashboardContract.View> implements DashboardContract.Presenter {
 
-    GetVisitsUseCase getVisitsUseCase;
+    @Inject
+    GetVisitsUseCase useCase;
 
     @Inject
     public DashboardPresenter(DashboardContract.View view, GetVisitsUseCase useCase) {
         attachView(view);
-        getVisitsUseCase = useCase;
+        this.useCase = useCase;
     }
 
     @Override
-    public void loadData() {
-        getVisitsUseCase.execute()
+    public void loadData(VisitFilterType filter) {
+        useCase.execute()
+                .map(list -> filterList(list, filter))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onSuccess);
+
         mView.setSalesAmount(10);
+    }
+
+    private List<VisitWithName> filterList(List<VisitWithName> list, VisitFilterType filterType) {
+        Calendar start = createStartDateBasedOnFilter(filterType);
+        Calendar end = createEndDateBasedOnFilter(filterType);
+
+        List<VisitWithName> filtered = new ArrayList<>();
+
+        for(VisitWithName v : list) {
+            if(v.visittime < start.getTimeInMillis() || v.visittime > end.getTimeInMillis()) {
+                filtered.add(v);
+            }
+        }
+
+        list.removeAll(filtered);
+
+        return list;
     }
 
     private void onSuccess(List<VisitWithName> visits) {
         mView.setVisitAmount(visits.size());
+    }
+
+    private Calendar createStartDateBasedOnFilter(VisitFilterType filterType) {
+        Calendar cal = Calendar.getInstance();
+
+        switch (filterType) {
+            case WEEKLY:
+                cal.set(Calendar.DAY_OF_WEEK, 1);
+            case TODAY:
+                cal.set(Calendar.HOUR, 0);
+                cal.set(Calendar.MINUTE, 0);
+                cal.set(Calendar.SECOND, 0);
+        }
+
+        return cal;
+    }
+
+    private Calendar createEndDateBasedOnFilter(VisitFilterType filterType) {
+        Calendar cal = Calendar.getInstance();
+
+        switch (filterType) {
+            case WEEKLY:
+                cal.set(Calendar.DAY_OF_WEEK, 7);
+            case TODAY:
+                cal.set(Calendar.HOUR, 23);
+                cal.set(Calendar.MINUTE, 59);
+                cal.set(Calendar.SECOND, 59);
+        }
+
+        return cal;
     }
 }

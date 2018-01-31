@@ -14,6 +14,7 @@ import com.arcanum.arcanumstoremanager.domain.repo.UserRepository;
 import com.arcanum.arcanumstoremanager.domain.repo.VisitRepository;
 import com.arcanum.arcanumstoremanager.domain.usecase.CreateVisitUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsBetweenDateUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.RegisterUseCase;
 
@@ -76,5 +77,11 @@ public abstract class AppModule {
     @Singleton
     static GetVisitsUseCase provideGetVisitUseCase(VisitRepository repository) {
         return new GetVisitsUseCase(repository);
+    }
+
+    @Provides
+    @Singleton
+    static GetVisitsBetweenDateUseCase provideGetVisitBetweenDatesUseCase(VisitRepository repository) {
+        return new GetVisitsBetweenDateUseCase(repository);
     }
 }

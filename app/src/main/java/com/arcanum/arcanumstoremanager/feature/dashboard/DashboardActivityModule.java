@@ -1,5 +1,6 @@
 package com.arcanum.arcanumstoremanager.feature.dashboard;
 
+import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsBetweenDateUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsUseCase;
 import com.arcanum.arcanumstoremanager.feature.RouterImpl;
 import com.arcanum.arcanumstoremanager.base.Router;

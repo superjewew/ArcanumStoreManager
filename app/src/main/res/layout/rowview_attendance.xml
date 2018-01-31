@@ -12,7 +12,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textColor="@color/colorTextBlack"
         android:layout_alignParentLeft="true"
         tools:text="Galih"
@@ -27,6 +27,7 @@
         android:layout_marginLeft="16dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/name"
+        android:textSize="12sp"
         tools:text="Daily Pass" />
 
     <TextView
@@ -35,9 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginRight="16dp"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textColor="@color/colorTextBlack"
         android:layout_alignParentRight="true"
-        tools:text="12:00" />
+        tools:text="31 Jan 12:00" />
 
 </RelativeLayout>

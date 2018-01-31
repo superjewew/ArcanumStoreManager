@@ -5,6 +5,14 @@ package com.arcanum.arcanumstoremanager.feature.dashboard;
  */
 
 public interface DashboardContract {
+
+    enum VisitFilterType {
+        TODAY,
+        WEEKLY,
+        MONTHLY,
+        ALLTIME
+    }
+
     interface View {
         void setVisitAmount(int visit);
         void setSalesAmount(int sales);
@@ -14,6 +22,6 @@ public interface DashboardContract {
     }
 
     interface Presenter {
-        void loadData();
+        void loadData(VisitFilterType filter);
     }
 }

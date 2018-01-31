@@ -10,8 +10,11 @@ import com.arcanum.arcanumstoremanager.R;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.base.Router;
 
+import org.androidannotations.annotations.AfterExtras;
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 import javax.inject.Inject;
@@ -57,9 +60,17 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
     @Inject
     Router mRouter;
 
+    @Extra
+    String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @AfterViews
+    public void initAfterExtras() {
+        usernameEt.setText(username);
     }
 
     @Override

@@ -44,7 +44,7 @@ public class LoginActivity extends DaggerAppCompatActivity implements LoginContr
 
     @Override
     public void showRegisterScreen() {
-        mRouter.showRegisterScreen();
+        mRouter.showRegisterScreen(mEmailEt.getText().toString());
     }
 
     @Override

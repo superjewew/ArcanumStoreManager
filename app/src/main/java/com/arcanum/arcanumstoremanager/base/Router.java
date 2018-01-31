@@ -6,7 +6,7 @@ package com.arcanum.arcanumstoremanager.base;
 
 public interface Router {
     void closeScreen();
-    void showRegisterScreen();
+    void showRegisterScreen(String username);
     void showAdminScreen();
     void showLoggedScreen(String username);
     void showVisitsScreen();

@@ -27,8 +27,8 @@ public class RouterImpl implements Router {
     }
 
     @Override
-    public void showRegisterScreen() {
-        RegisterActivity_.intent(activity).start();
+    public void showRegisterScreen(String username) {
+        RegisterActivity_.intent(activity).username(username).start();
     }
 
     @Override

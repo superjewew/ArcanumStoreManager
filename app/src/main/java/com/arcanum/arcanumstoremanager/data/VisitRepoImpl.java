@@ -36,6 +36,11 @@ public class VisitRepoImpl implements VisitRepository {
         return Single.defer(() -> db.visitDao().getAllVisit());
     }
 
+    @Override
+    public Single<List<VisitWithName>> getAllVisitsBetween(Long start, Long end) {
+        return Single.defer(() -> db.visitDao().getAllVisitBetweenTime(start, end));
+    }
+
     private long innerCreateVisit(String username) {
         Visit visit = new Visit();
         visit.setVisitor(username);

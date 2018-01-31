@@ -14,4 +14,5 @@ import io.reactivex.Single;
 public interface VisitRepository {
     Completable createVisit(String username);
     Single<List<VisitWithName>> getAllVisits();
+    Single<List<VisitWithName>> getAllVisitsBetween(Long start, Long end);
 }

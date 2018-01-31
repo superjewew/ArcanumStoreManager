@@ -23,8 +23,16 @@ public interface VisitDao {
 
     @Query("SELECT visit.visitor AS username, user.fullname AS fullname, visit.visitTime AS visittime "
             + "FROM visit, user "
-            + "WHERE visit.visitor = user.username")
+            + "WHERE visit.visitor = user.username "
+            + "ORDER BY visit.visitTime DESC")
     public Single<List<VisitWithName>> getAllVisit();
+
+    @Query("SELECT visit.visitor AS username, user.fullname AS fullname, visit.visitTime AS visittime "
+            + "FROM visit, user "
+            + "WHERE visit.visitor = user.username "
+            + "AND visit.visitTime BETWEEN :start AND :end "
+            + "ORDER BY visit.visitTime DESC")
+    public Single<List<VisitWithName>> getAllVisitBetweenTime(Long start, Long end);
 
     static class VisitWithName {
         public String username;

@@ -42,6 +42,12 @@ public class LoggedActivity extends DaggerAppCompatActivity implements LoggedCon
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        onDoneClicked();
+    }
+
+    @Override
     public void showError(String e) {
         Toast.makeText(this, e, Toast.LENGTH_SHORT).show();
     }

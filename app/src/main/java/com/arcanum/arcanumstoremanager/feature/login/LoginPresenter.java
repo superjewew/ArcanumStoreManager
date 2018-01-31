@@ -17,7 +17,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
     private String username_test = "test";
     private String admin_test = "admin";
-    private String password_test = "1234";
+    private String admin_pass = "adminarcanum";
 
     private GetUserUseCase getUserUseCase;
     private String pass;
@@ -31,7 +31,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     @Override
     public void attemptLogin(String username, String password) {
         pass = password;
-        if(username.equals(admin_test)) {
+        if(username.equals(admin_test) && password.equals(admin_pass)) {
             mView.showAdminScreen();
         } else {
             getUserUseCase.execute(username)
@@ -51,7 +51,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     }
 
     private void onFailed(Throwable throwable) {
-        mView.showError(throwable.getLocalizedMessage() + ", redirecting to registration screen");
+        mView.showError("User not found, redirecting to registration screen");
         mView.showRegisterScreen();
     }
 }

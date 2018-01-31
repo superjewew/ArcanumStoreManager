@@ -28,11 +28,15 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     }
 
     @Override
-    public void attemptLogin(String email, String password) {
-        getUserUseCase.execute(email)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onSuccess, this::onFailed);
+    public void attemptLogin(String username, String password) {
+        if(username.equals(admin_test)) {
+            mView.showAdminScreen();
+        } else {
+            getUserUseCase.execute(username)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::onSuccess, this::onFailed);
+        }
     }
 
     private void onSuccess(User user) {
@@ -41,11 +45,12 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         } else if(user.getUsername().equals(admin_test)) {
             mView.showAdminScreen();
         } else {
-            mView.showRegisterScreen();
+            mView.showError("User not found");
         }
     }
 
     private void onFailed(Throwable throwable) {
-        mView.showError(throwable.getLocalizedMessage());
+        mView.showError(throwable.getLocalizedMessage() + ", redirecting to registration screen");
+        mView.showRegisterScreen();
     }
 }

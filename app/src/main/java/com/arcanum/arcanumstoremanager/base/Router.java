@@ -13,6 +13,6 @@ public interface Router {
     void showSalesScreen();
     void showInventoryScreen();
     void showProductDetailScreen();
-    void showUsersScreen();
+    void showAccountsScreen();
     void showUserDetailScreen();
 }

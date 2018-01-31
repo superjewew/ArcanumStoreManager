@@ -1,6 +1,8 @@
 package com.arcanum.arcanumstoremanager.feature.dashboard;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.arcanum.arcanumstoremanager.R;
@@ -38,6 +40,23 @@ public class DashboardActivity extends DaggerAppCompatActivity implements Dashbo
     @AfterViews
     public void initAfterViews() {
         mPresenter.loadData();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_account:
+                mRouter.showAccountsScreen();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

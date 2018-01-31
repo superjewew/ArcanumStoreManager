@@ -22,8 +22,9 @@ public class AccountsPresenter extends BasePresenter<AccountsContract.View> impl
     GetAllUserUseCase getAllUserUseCase;
 
     @Inject
-    public AccountsPresenter(AccountsContract.View mainView) {
+    public AccountsPresenter(AccountsContract.View mainView, GetAllUserUseCase userUseCase) {
         attachView(mainView);
+        getAllUserUseCase = userUseCase;
     }
 
     @Override

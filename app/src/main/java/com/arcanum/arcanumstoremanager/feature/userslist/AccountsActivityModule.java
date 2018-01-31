@@ -1,6 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.userslist;
 
 import com.arcanum.arcanumstoremanager.base.Router;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetAllUserUseCase;
 import com.arcanum.arcanumstoremanager.feature.RouterImpl;
 
 import dagger.Module;
@@ -24,7 +25,7 @@ public class AccountsActivityModule {
     }
 
     @Provides
-    AccountsContract.Presenter provideMainPresenter(AccountsContract.View mainView){
-        return new AccountsPresenter(mainView);
+    AccountsContract.Presenter provideMainPresenter(AccountsContract.View mainView, GetAllUserUseCase useCase){
+        return new AccountsPresenter(mainView, useCase);
     }
 }

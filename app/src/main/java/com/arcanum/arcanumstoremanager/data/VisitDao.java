@@ -29,6 +29,6 @@ public interface VisitDao {
     static class VisitWithName {
         public String username;
         public String fullname;
-        public String visittime;
+        public Long visittime;
     }
 }

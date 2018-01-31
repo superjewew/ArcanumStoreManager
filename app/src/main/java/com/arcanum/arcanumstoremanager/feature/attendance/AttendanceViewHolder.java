@@ -13,6 +13,7 @@ import org.androidannotations.annotations.ViewById;
 import java.text.ParseException;
 
 import static com.arcanum.arcanumstoremanager.DateUtils.ConvertDateStringFormat;
+import static com.arcanum.arcanumstoremanager.DateUtils.DateInMillisToStringFormatted;
 
 /**
  * Created by norman on 30/01/18.
@@ -37,11 +38,6 @@ public class AttendanceViewHolder extends ConstraintLayout {
     public void bindData(VisitWithName visit) {
         nameTv.setText(visit.username);
         fullnameTv.setText(visit.fullname);
-
-        try {
-            timeTv.setText(ConvertDateStringFormat(visit.visittime, "d MMM HH:mm"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        timeTv.setText(DateInMillisToStringFormatted(visit.visittime));
     }
 }

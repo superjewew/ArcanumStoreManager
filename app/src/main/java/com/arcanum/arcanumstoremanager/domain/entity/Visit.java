@@ -13,14 +13,14 @@ public class Visit {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    private String visitTime;
+    private Long visitTime;
     private String visitor;
 
-    public String getVisitTime() {
+    public Long getVisitTime() {
         return visitTime;
     }
 
-    public void setVisitTime(String visitTime) {
+    public void setVisitTime(Long visitTime) {
         this.visitTime = visitTime;
     }
 

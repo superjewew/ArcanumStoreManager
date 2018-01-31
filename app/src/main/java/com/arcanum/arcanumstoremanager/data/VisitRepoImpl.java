@@ -1,6 +1,5 @@
 package com.arcanum.arcanumstoremanager.data;
 
-import com.arcanum.arcanumstoremanager.DateUtils;
 import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
 import com.arcanum.arcanumstoremanager.data.database.ArcanumDatabase;
 import com.arcanum.arcanumstoremanager.domain.entity.Visit;
@@ -40,7 +39,7 @@ public class VisitRepoImpl implements VisitRepository {
     private long innerCreateVisit(String username) {
         Visit visit = new Visit();
         visit.setVisitor(username);
-        visit.setVisitTime(DateUtils.DateToStringFormatted(Calendar.getInstance().getTime()));
+        visit.setVisitTime(Calendar.getInstance().getTimeInMillis());
         return db.visitDao().insertVisit(visit);
     }
 

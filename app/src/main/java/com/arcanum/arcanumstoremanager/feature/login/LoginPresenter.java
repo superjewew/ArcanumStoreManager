@@ -20,6 +20,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     private String password_test = "1234";
 
     private GetUserUseCase getUserUseCase;
+    private String pass;
 
     @Inject
     LoginPresenter(LoginContract.View view, GetUserUseCase getUserUseCase) {
@@ -29,6 +30,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
     @Override
     public void attemptLogin(String username, String password) {
+        pass = password;
         if(username.equals(admin_test)) {
             mView.showAdminScreen();
         } else {
@@ -40,12 +42,11 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     }
 
     private void onSuccess(User user) {
-        if(user.getUsername().equals(username_test)) {
+        //TODO : Clean up this code
+        if(user.getPassword().equals(pass)) {
             mView.showLoggedScreen(user.getUsername());
-        } else if(user.getUsername().equals(admin_test)) {
-            mView.showAdminScreen();
         } else {
-            mView.showError("User not found");
+            mView.showError("Wrong Password");
         }
     }
 

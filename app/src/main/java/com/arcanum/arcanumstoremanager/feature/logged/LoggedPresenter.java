@@ -30,14 +30,13 @@ public class LoggedPresenter extends BasePresenter<LoggedContract.View> implemen
 
     @Override
     public void updateVisit(String username) {
-        getUserUseCase.execute(username)
-                .map(user -> createVisitUseCase.execute(user))
+        createVisitUseCase.execute(username)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())
                 .subscribe(this::onSuccess, this::onFailed);
     }
 
-    private void onSuccess(Completable c) {
+    private void onSuccess() {
         Log.d(getClass().getSimpleName(), "Visit created");
         mView.closeScreen();
         detachView();

@@ -13,6 +13,6 @@ import io.reactivex.Single;
  */
 
 public interface VisitRepository {
-    Completable createVisit(User user);
+    Completable createVisit(String username);
     Single<List<Visit>> getAllVisits();
 }

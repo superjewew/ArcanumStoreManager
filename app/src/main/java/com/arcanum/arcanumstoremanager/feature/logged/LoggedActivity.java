@@ -1,6 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.logged;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.arcanum.arcanumstoremanager.R;
 import com.arcanum.arcanumstoremanager.base.Router;
@@ -42,6 +43,6 @@ public class LoggedActivity extends DaggerAppCompatActivity implements LoggedCon
 
     @Override
     public void showError(String e) {
-
+        Toast.makeText(this, e, Toast.LENGTH_SHORT).show();
     }
 }

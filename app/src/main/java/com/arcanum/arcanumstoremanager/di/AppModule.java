@@ -10,6 +10,7 @@ import com.arcanum.arcanumstoremanager.data.UserDao;
 import com.arcanum.arcanumstoremanager.data.UserRepoImpl;
 import com.arcanum.arcanumstoremanager.data.VisitRepoImpl;
 import com.arcanum.arcanumstoremanager.data.database.UserDatabase;
+import com.arcanum.arcanumstoremanager.data.database.VisitDatabase;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.domain.repo.UserRepository;
 import com.arcanum.arcanumstoremanager.domain.repo.VisitRepository;
@@ -45,14 +46,20 @@ public abstract class AppModule {
 
     @Provides
     @Singleton
+    static VisitDatabase provideVisitDatabase(DaggerApplication application) {
+        return Room.databaseBuilder(application, VisitDatabase.class, "visits").build();
+    }
+
+    @Provides
+    @Singleton
     static UserRepository provideRepository(UserDatabase db) {
         return new UserRepoImpl(db);
     }
 
     @Provides
     @Singleton
-    static VisitRepository provideVisitRepository() {
-        return new VisitRepoImpl();
+    static VisitRepository provideVisitRepository(VisitDatabase db) {
+        return new VisitRepoImpl(db);
     }
 
     @Provides

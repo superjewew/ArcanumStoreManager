@@ -32,7 +32,6 @@ public class AttendanceViewHolder extends ConstraintLayout {
 
     public void bindData(Visit visit) {
         nameTv.setText(visit.getVisitor());
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.US);
-        timeTv.setText(timeFormat.format(visit.getVisitTime()));
+        timeTv.setText(visit.getVisitTime());
     }
 }

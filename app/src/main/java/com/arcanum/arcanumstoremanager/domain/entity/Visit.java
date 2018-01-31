@@ -1,20 +1,26 @@
 package com.arcanum.arcanumstoremanager.domain.entity;
 
-import java.util.Date;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 
 /**
  * Created by norman on 29/01/18.
  */
 
+@Entity
 public class Visit {
-    private Date visitTime;
+
+    @PrimaryKey
+    public int id;
+
+    private String visitTime;
     private String visitor;
 
-    public Date getVisitTime() {
+    public String getVisitTime() {
         return visitTime;
     }
 
-    public void setVisitTime(Date visitTime) {
+    public void setVisitTime(String visitTime) {
         this.visitTime = visitTime;
     }
 

@@ -1,9 +1,12 @@
 package com.arcanum.arcanumstoremanager.data;
 
+import com.arcanum.arcanumstoremanager.data.database.UserDatabase;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.domain.repo.UserRepository;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -15,19 +18,26 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserRepoImpl implements UserRepository {
 
+    UserDatabase db;
+
+    @Inject
+    public UserRepoImpl(UserDatabase db) {
+        this.db = db;
+    }
+
     @Override
     public Completable createUser(User user) {
-        return Completable.defer(() -> Completable.fromAction(this::dummyUser));
+        return Completable.defer(() -> Completable.fromAction(() -> innerCreateUser(user)));
     }
 
     @Override
     public Single<List<User>> getAllUser() {
-        return null;
+        return Single.defer(this::innerGetAllUsers);
     }
 
     @Override
-    public Single<User> getUserByEmail(String email) {
-        return Single.defer(() -> Single.just(dummyUserFromEmail(email)));
+    public Single<User> getUserByUsername(String username) {
+        return Single.defer(() -> innerGetUserByUsername(username));
     }
 
     @Override
@@ -48,12 +58,20 @@ public class UserRepoImpl implements UserRepository {
         );
     }
 
-    private User dummyUser() {
-        return new User();
+    private long innerCreateUser(User user) {
+        return db.userDao().insertUser(user);
+    }
+
+    private Single<User> innerGetUserByUsername(String username) {
+        return db.userDao().getUserByUsername(username);
+    }
+
+    private Single<List<User>> innerGetAllUsers() {
+        return db.userDao().loadAllUsers();
     }
 
     private User dummyUserFromEmail(String name) {
-        User user = dummyUser();
+        User user = new User();
         user.setUsername(name);
         return user;
     }

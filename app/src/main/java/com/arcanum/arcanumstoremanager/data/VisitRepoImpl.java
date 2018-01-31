@@ -37,10 +37,16 @@ public class VisitRepoImpl implements VisitRepository {
 
     private List<Visit> innerGetVisits() {
         List<Visit> visits = new ArrayList<>();
-        Visit visit = new Visit();
-        visit.setVisitTime(Calendar.getInstance().getTime());
-        visit.setVisitor("Full Name");
-        visits.add(visit);
+        Visit visit1 = new Visit();
+        visit1.setVisitTime(Calendar.getInstance().getTime());
+        visit1.setVisitor("Galih Aristo");
+        visits.add(visit1);
+        Calendar cal =  Calendar.getInstance();
+        cal.add(Calendar.HOUR, -1);
+        Visit visit2 = new Visit();
+        visit2.setVisitTime(cal.getTime());
+        visit2.setVisitor("Filar Mandaras");
+        visits.add(visit2);
         return visits;
     }
 

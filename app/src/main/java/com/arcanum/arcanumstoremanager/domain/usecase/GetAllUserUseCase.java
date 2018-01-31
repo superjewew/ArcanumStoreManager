@@ -1,28 +1,30 @@
 package com.arcanum.arcanumstoremanager.domain.usecase;
 
-import com.arcanum.arcanumstoremanager.base.BaseUseCaseWithParam;
+import com.arcanum.arcanumstoremanager.base.BaseUseCase;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.domain.repo.UserRepository;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.Single;
 
 /**
- * Created by norman on 29/01/18.
+ * Created by norman on 31/01/18.
  */
 
-public class GetUserUseCase implements BaseUseCaseWithParam<String, User> {
+public class GetAllUserUseCase implements BaseUseCase<List<User>> {
 
     private UserRepository repository;
 
     @Inject
-    public GetUserUseCase(UserRepository repository) {
+    public GetAllUserUseCase(UserRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public Single<User> execute(String param) {
-        return repository.getUserByUsername(param);
+    public Single<List<User>> execute() {
+        return repository.getAllUser();
     }
 }

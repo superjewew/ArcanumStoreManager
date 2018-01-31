@@ -1,18 +1,24 @@
 package com.arcanum.arcanumstoremanager.domain.entity;
 
-import java.util.Date;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
 
 /**
  * Created by norman on 24/01/18.
  */
 
+@Entity(indices = {@Index(value = "username", unique = true)})
 public class User {
+    @PrimaryKey
+    public int id;
     private String username;
     private String password;
     private String fullname;
     private String email;
     private String phone;
-    private Date dob;
+    private String passType;
+    private String dob;
 
     public String getUsername() {
         return username;
@@ -54,11 +60,19 @@ public class User {
         this.phone = phone;
     }
 
-    public Date getDob() {
+    public String getPassType() {
+        return passType;
+    }
+
+    public void setPassType(String passType) {
+        this.passType = passType;
+    }
+
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -90,7 +104,12 @@ public class User {
             return this;
         }
 
-        public Builder dob(Date dob) {
+        public Builder passType(String type) {
+            user.setPassType(type);
+            return this;
+        }
+
+        public Builder dob(String dob) {
             user.setDob(dob);
             return this;
         }

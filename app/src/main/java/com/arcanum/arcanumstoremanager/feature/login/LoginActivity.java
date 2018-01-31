@@ -2,6 +2,7 @@ package com.arcanum.arcanumstoremanager.feature.login;
 
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.arcanum.arcanumstoremanager.R;
 import com.arcanum.arcanumstoremanager.base.Router;
@@ -58,6 +59,6 @@ public class LoginActivity extends DaggerAppCompatActivity implements LoginContr
 
     @Override
     public void showError(String e) {
-
+        Toast.makeText(this, e, Toast.LENGTH_SHORT).show();
     }
 }

@@ -14,7 +14,7 @@ import io.reactivex.Single;
 public interface UserRepository {
     Completable createUser(User user);
     Single<List<User>> getAllUser();
-    Single<User> getUserByEmail(String email);
+    Single<User> getUserByUsername(String username);
     Completable updateUser(User user);
     void deleteUser(int id);
 }

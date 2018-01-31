@@ -10,7 +10,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity(indices = {@Index(value = "username", unique = true)})
 public class User {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
     private String username;
     private String password;

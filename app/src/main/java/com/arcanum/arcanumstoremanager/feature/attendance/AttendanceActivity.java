@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.arcanum.arcanumstoremanager.R;
+import com.arcanum.arcanumstoremanager.data.VisitDao;
+import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
 import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 
 import org.androidannotations.annotations.AfterViews;
@@ -46,7 +48,7 @@ public class AttendanceActivity extends DaggerAppCompatActivity implements Atten
     }
 
     @Override
-    public void updateAdapter(List<Visit> visits) {
+    public void updateAdapter(List<VisitWithName> visits) {
         adapter = AttendanceAdapter_.getInstance_(this);
         adapter.initItems(visits);
         attendanceList.setAdapter(adapter);

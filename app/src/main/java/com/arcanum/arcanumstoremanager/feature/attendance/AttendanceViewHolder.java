@@ -5,6 +5,8 @@ import android.support.constraint.ConstraintLayout;
 import android.widget.TextView;
 
 import com.arcanum.arcanumstoremanager.R;
+import com.arcanum.arcanumstoremanager.data.VisitDao;
+import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
 import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 
 import org.androidannotations.annotations.EViewGroup;
@@ -23,6 +25,9 @@ public class AttendanceViewHolder extends ConstraintLayout {
     @ViewById(R.id.name)
     TextView nameTv;
 
+    @ViewById(R.id.fullname)
+    TextView fullnameTv;
+
     @ViewById(R.id.time)
     TextView timeTv;
 
@@ -30,8 +35,9 @@ public class AttendanceViewHolder extends ConstraintLayout {
         super(context);
     }
 
-    public void bindData(Visit visit) {
-        nameTv.setText(visit.getVisitor());
-        timeTv.setText(visit.getVisitTime());
+    public void bindData(VisitWithName visit) {
+        nameTv.setText(visit.username);
+        fullnameTv.setText(visit.fullname);
+        timeTv.setText(visit.visittime);
     }
 }

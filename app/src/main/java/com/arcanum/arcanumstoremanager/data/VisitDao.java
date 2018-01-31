@@ -21,6 +21,14 @@ public interface VisitDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public long insertVisit(Visit visit);
 
-    @Query("SELECT * FROM visit")
-    public Single<List<Visit>> getAllVisit();
+    @Query("SELECT visit.visitor AS username, user.fullname AS fullname, visit.visitTime AS visittime "
+            + "FROM visit, user "
+            + "WHERE visit.visitor = user.username")
+    public Single<List<VisitWithName>> getAllVisit();
+
+    static class VisitWithName {
+        public String username;
+        public String fullname;
+        public String visittime;
+    }
 }

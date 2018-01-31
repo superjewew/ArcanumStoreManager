@@ -1,6 +1,8 @@
 package com.arcanum.arcanumstoremanager.domain.usecase;
 
 import com.arcanum.arcanumstoremanager.base.BaseUseCase;
+import com.arcanum.arcanumstoremanager.data.VisitDao;
+import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
 import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 import com.arcanum.arcanumstoremanager.domain.repo.VisitRepository;
 
@@ -14,7 +16,7 @@ import io.reactivex.Single;
  * Created by norman on 29/01/18.
  */
 
-public class GetVisitsUseCase implements BaseUseCase<List<Visit>> {
+public class GetVisitsUseCase implements BaseUseCase<List<VisitWithName>> {
 
     VisitRepository repository;
 
@@ -24,7 +26,7 @@ public class GetVisitsUseCase implements BaseUseCase<List<Visit>> {
     }
 
     @Override
-    public Single<List<Visit>> execute() {
+    public Single<List<VisitWithName>> execute() {
         return repository.getAllVisits();
     }
 }

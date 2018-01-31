@@ -6,11 +6,9 @@ import android.content.Context;
 
 import com.arcanum.arcanumstoremanager.base.BaseUseCaseWithParam;
 import com.arcanum.arcanumstoremanager.base.CompletableUseCase;
-import com.arcanum.arcanumstoremanager.data.UserDao;
 import com.arcanum.arcanumstoremanager.data.UserRepoImpl;
 import com.arcanum.arcanumstoremanager.data.VisitRepoImpl;
-import com.arcanum.arcanumstoremanager.data.database.UserDatabase;
-import com.arcanum.arcanumstoremanager.data.database.VisitDatabase;
+import com.arcanum.arcanumstoremanager.data.database.ArcanumDatabase;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.domain.repo.UserRepository;
 import com.arcanum.arcanumstoremanager.domain.repo.VisitRepository;
@@ -40,25 +38,19 @@ public abstract class AppModule {
 
     @Provides
     @Singleton
-    static UserDatabase provideUserDatabase(DaggerApplication application) {
-        return Room.databaseBuilder(application, UserDatabase.class, "users").build();
+    static ArcanumDatabase provideUserDatabase(DaggerApplication application) {
+        return Room.databaseBuilder(application, ArcanumDatabase.class, "users").build();
     }
 
     @Provides
     @Singleton
-    static VisitDatabase provideVisitDatabase(DaggerApplication application) {
-        return Room.databaseBuilder(application, VisitDatabase.class, "visits").build();
-    }
-
-    @Provides
-    @Singleton
-    static UserRepository provideRepository(UserDatabase db) {
+    static UserRepository provideRepository(ArcanumDatabase db) {
         return new UserRepoImpl(db);
     }
 
     @Provides
     @Singleton
-    static VisitRepository provideVisitRepository(VisitDatabase db) {
+    static VisitRepository provideVisitRepository(ArcanumDatabase db) {
         return new VisitRepoImpl(db);
     }
 

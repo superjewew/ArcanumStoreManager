@@ -1,6 +1,8 @@
 package com.arcanum.arcanumstoremanager.feature.dashboard;
 
 import com.arcanum.arcanumstoremanager.base.BasePresenter;
+import com.arcanum.arcanumstoremanager.data.VisitDao;
+import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
 import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsUseCase;
 
@@ -34,7 +36,7 @@ public class DashboardPresenter extends BasePresenter<DashboardContract.View> im
         mView.setSalesAmount(10);
     }
 
-    private void onSuccess(List<Visit> visits) {
+    private void onSuccess(List<VisitWithName> visits) {
         mView.setVisitAmount(visits.size());
     }
 }

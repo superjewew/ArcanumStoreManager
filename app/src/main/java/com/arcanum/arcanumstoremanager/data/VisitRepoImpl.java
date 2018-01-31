@@ -1,16 +1,13 @@
 package com.arcanum.arcanumstoremanager.data;
 
 import com.arcanum.arcanumstoremanager.DateUtils;
-import com.arcanum.arcanumstoremanager.data.database.VisitDatabase;
-import com.arcanum.arcanumstoremanager.domain.entity.User;
+import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
+import com.arcanum.arcanumstoremanager.data.database.ArcanumDatabase;
 import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 import com.arcanum.arcanumstoremanager.domain.repo.VisitRepository;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -23,10 +20,10 @@ import io.reactivex.Single;
 
 public class VisitRepoImpl implements VisitRepository {
 
-    VisitDatabase db;
+    ArcanumDatabase db;
 
     @Inject
-    public VisitRepoImpl(VisitDatabase db) {
+    public VisitRepoImpl(ArcanumDatabase db) {
         this.db = db;
     }
 
@@ -36,7 +33,7 @@ public class VisitRepoImpl implements VisitRepository {
     }
 
     @Override
-    public Single<List<Visit>> getAllVisits() {
+    public Single<List<VisitWithName>> getAllVisits() {
         return Single.defer(() -> db.visitDao().getAllVisit());
     }
 

@@ -1,6 +1,6 @@
 package com.arcanum.arcanumstoremanager.data;
 
-import com.arcanum.arcanumstoremanager.data.database.UserDatabase;
+import com.arcanum.arcanumstoremanager.data.database.ArcanumDatabase;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.domain.repo.UserRepository;
 
@@ -18,10 +18,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserRepoImpl implements UserRepository {
 
-    UserDatabase db;
+    ArcanumDatabase db;
 
     @Inject
-    public UserRepoImpl(UserDatabase db) {
+    public UserRepoImpl(ArcanumDatabase db) {
         this.db = db;
     }
 

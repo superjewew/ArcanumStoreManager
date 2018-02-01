@@ -59,7 +59,7 @@ public class DashboardActivity extends DaggerAppCompatActivity implements Dashbo
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_account:
+            case R.id.menu_item_account:
                 mRouter.showAccountsScreen();
                 return true;
             case R.id.menu_sort_today:

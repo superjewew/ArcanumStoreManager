@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_filter"
+        android:id="@+id/menu_item_filter"
         android:icon="@drawable/ic_filter_list_black_24dp"
         android:orderInCategory="100"
         android:title="Filter"
@@ -17,7 +17,7 @@
         </menu>
     </item>
     <item
-        android:id="@+id/menu_account"
+        android:id="@+id/menu_item_account"
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:orderInCategory="101"
         android:title="@string/account"

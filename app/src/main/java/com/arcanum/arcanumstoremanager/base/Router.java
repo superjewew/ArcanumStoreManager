@@ -24,4 +24,6 @@ public interface Router {
     void showAccountsScreen();
 
     void showAccountDetailScreen(String username);
+
+    void showAccountEditScreen(String username);
 }

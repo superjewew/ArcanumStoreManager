@@ -10,7 +10,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by norman on 25/01/18.
@@ -42,7 +41,7 @@ public class UserRepoImpl implements UserRepository {
 
     @Override
     public Completable updateUser(User user) {
-        return Completable.defer(() -> updateUserInner(user).subscribeOn(Schedulers.io()));
+        return Completable.defer(() -> innerUpdateUser(user));
     }
 
     @Override
@@ -50,7 +49,7 @@ public class UserRepoImpl implements UserRepository {
 
     }
     
-    private Completable updateUserInner(User user) {
+    private Completable innerUpdateUser(User user) {
         return Completable.fromAction(() -> db.userDao().updateUsers(user));
     }
 
@@ -66,9 +65,4 @@ public class UserRepoImpl implements UserRepository {
         return db.userDao().loadAllUsers();
     }
 
-    private User dummyUserFromEmail(String name) {
-        User user = new User();
-        user.setUsername(name);
-        return user;
-    }
 }

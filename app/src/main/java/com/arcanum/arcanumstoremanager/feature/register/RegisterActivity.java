@@ -17,6 +17,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.ItemSelect;
 import org.androidannotations.annotations.ViewById;
 
 import javax.inject.Inject;
@@ -68,6 +69,8 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
     @Extra
     String username;
 
+    String passType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +117,11 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
         mPresenter.registerUser(user);
     }
 
+    @ItemSelect(R.id.pass_spinner)
+    public void onPassTypeSelected(boolean selected, String passType) {
+        this.passType = passType;
+    }
+
     private User createUserFromField() {
         return new User.Builder()
                 .username(usernameEt.getText().toString())
@@ -121,6 +129,7 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
                 .fullname(fullnameEt.getText().toString())
                 .email(emailEt.getText().toString())
                 .phone(phoneEt.getText().toString())
+                .passType(passType)
                 .build();
     }
 }

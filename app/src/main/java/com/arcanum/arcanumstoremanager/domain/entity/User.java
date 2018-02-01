@@ -1,5 +1,6 @@
 package com.arcanum.arcanumstoremanager.domain.entity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
@@ -12,6 +13,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class User {
     @PrimaryKey(autoGenerate = true)
     public int id;
+    @ColumnInfo(collate = ColumnInfo.NOCASE)
     private String username;
     private String password;
     private String fullname;

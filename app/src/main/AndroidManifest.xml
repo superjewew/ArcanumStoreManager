@@ -27,7 +27,8 @@
         <activity android:name=".feature.dashboard.DashboardActivity_" />
         <activity android:name=".feature.attendance.AttendanceActivity_" />
         <activity android:name=".feature.userslist.AccountsActivity_" />
-        <activity android:name=".feature.userdetail.AccountDetailActivity_"/>
+        <activity android:name=".feature.userdetail.AccountDetailActivity_" />
+        <activity android:name=".feature.useredit.AccountEditActivity_"></activity>
     </application>
 
 </manifest>

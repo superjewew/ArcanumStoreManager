@@ -51,11 +51,7 @@ public class UserRepoImpl implements UserRepository {
     }
     
     private Completable updateUserInner(User user) {
-        return Completable.fromAction(() ->
-            {
-
-            }
-        );
+        return Completable.fromAction(() -> db.userDao().updateUsers(user));
     }
 
     private long innerCreateUser(User user) {

@@ -10,6 +10,8 @@ import com.arcanum.arcanumstoremanager.feature.login.LoginActivityModule;
 import com.arcanum.arcanumstoremanager.feature.login.LoginActivity_;
 import com.arcanum.arcanumstoremanager.feature.register.RegisterActivityModule;
 import com.arcanum.arcanumstoremanager.feature.register.RegisterActivity_;
+import com.arcanum.arcanumstoremanager.feature.userdetail.AccountDetailActivityModule;
+import com.arcanum.arcanumstoremanager.feature.userdetail.AccountDetailActivity_;
 import com.arcanum.arcanumstoremanager.feature.userslist.AccountsActivityModule;
 import com.arcanum.arcanumstoremanager.feature.userslist.AccountsActivity_;
 
@@ -40,4 +42,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = AccountsActivityModule.class)
     abstract AccountsActivity_ bindAccountsActivity();
+
+    @ContributesAndroidInjector(modules = AccountDetailActivityModule.class)
+    abstract AccountDetailActivity_ bindAccountDetailActivity();
 }

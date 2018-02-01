@@ -3,12 +3,15 @@ package com.arcanum.arcanumstoremanager.feature.userslist;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.arcanum.arcanumstoremanager.R;
+import com.arcanum.arcanumstoremanager.base.Router;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
@@ -25,6 +28,9 @@ public class AccountsActivity extends DaggerAppCompatActivity implements Account
 
     @Inject
     AccountsContract.Presenter mPresenter;
+
+    @Inject
+    Router router;
 
     private AccountsAdapter adapter;
 
@@ -43,6 +49,7 @@ public class AccountsActivity extends DaggerAppCompatActivity implements Account
     public void updateAdapter(List<User> users) {
         adapter = AccountsAdapter_.getInstance_(this);
         adapter.initItems(users);
+        adapter.listener = v -> router.showAccountDetailScreen(((User) v.getTag()).getUsername());
         accountList.setAdapter(adapter);
     }
 }

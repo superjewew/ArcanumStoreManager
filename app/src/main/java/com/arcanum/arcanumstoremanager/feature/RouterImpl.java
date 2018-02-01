@@ -7,6 +7,7 @@ import com.arcanum.arcanumstoremanager.feature.attendance.AttendanceActivity_;
 import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardActivity_;
 import com.arcanum.arcanumstoremanager.feature.logged.LoggedActivity_;
 import com.arcanum.arcanumstoremanager.feature.register.RegisterActivity_;
+import com.arcanum.arcanumstoremanager.feature.userdetail.AccountDetailActivity_;
 import com.arcanum.arcanumstoremanager.feature.userslist.AccountsActivity_;
 
 /**
@@ -67,7 +68,7 @@ public class RouterImpl implements Router {
     }
 
     @Override
-    public void showUserDetailScreen() {
-
+    public void showAccountDetailScreen(String username) {
+        AccountDetailActivity_.intent(activity).username(username).start();
     }
 }

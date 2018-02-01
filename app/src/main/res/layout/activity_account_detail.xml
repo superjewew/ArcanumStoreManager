@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="8dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    tools:context="com.arcanum.arcanumstoremanager.feature.userdetail.AccountDetailActivity">
+
+    <TextView
+        android:id="@+id/username_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="12sp"
+        android:text="Username"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@color/colorTextBlack"
+        app:layout_constraintTop_toBottomOf="@+id/username_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="Superjewew"/>
+
+    <View
+        android:id="@+id/username_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/username"/>
+
+    <TextView
+        android:id="@+id/fullname_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/username_divider"
+        android:text="Full Name"/>
+
+    <TextView
+        android:id="@+id/fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@color/colorTextBlack"
+        app:layout_constraintTop_toBottomOf="@+id/fullname_label"
+        tools:text="Norman Lie"/>
+
+    <View
+        android:id="@+id/fullname_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/fullname"/>
+
+    <TextView
+        android:id="@+id/email_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/fullname_divider"
+        android:text="Email"/>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorTextBlack"
+        app:layout_constraintTop_toBottomOf="@+id/email_label"
+        tools:text="test@test.com"/>
+
+    <View
+        android:id="@+id/email_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/email"/>
+
+    <TextView
+        android:id="@+id/phone_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/email_divider"
+        android:text="Phone"/>
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorTextBlack"
+        app:layout_constraintTop_toBottomOf="@+id/phone_label"
+        tools:text="0812381283"/>
+
+    <View
+        android:id="@+id/phone_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/phone"/>
+
+
+</android.support.constraint.ConstraintLayout>

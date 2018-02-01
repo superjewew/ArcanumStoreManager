@@ -40,7 +40,7 @@ public class DashboardPresenter extends BasePresenter<DashboardContract.View> im
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onSuccess);
 
-        mView.setSalesAmount(10);
+        mView.setSalesAmount(0);
     }
 
     private List<VisitWithName> filterList(List<VisitWithName> list, VisitFilterType filterType) {

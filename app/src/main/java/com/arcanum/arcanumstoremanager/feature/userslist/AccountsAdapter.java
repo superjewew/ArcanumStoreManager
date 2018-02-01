@@ -1,6 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.userslist;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.arcanum.arcanumstoremanager.base.BaseRecyclerViewAdapter;
@@ -22,6 +23,8 @@ public class AccountsAdapter extends BaseRecyclerViewAdapter<User, AccountsViewH
     @RootContext
     Context context;
 
+    View.OnClickListener listener;
+
     @Override
     protected AccountsViewHolder onCreateItemView(ViewGroup parent, int viewType) {
         return AccountsViewHolder_.build(context);
@@ -37,6 +40,13 @@ public class AccountsAdapter extends BaseRecyclerViewAdapter<User, AccountsViewH
         AccountsViewHolder view = holder.getView();
         User user = items.get(position);
 
+        setOnClickListener(view, user);
+
         view.bindData(user);
+    }
+
+    private void setOnClickListener(AccountsViewHolder view, User user) {
+        view.setTag(user);
+        view.setOnClickListener(listener);
     }
 }

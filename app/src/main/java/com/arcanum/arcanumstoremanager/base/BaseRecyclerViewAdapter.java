@@ -11,7 +11,7 @@ import java.util.List;
  * Created by norman on 30/01/18.
  */
 
-public abstract class BaseRecyclerViewAdapter <T, V extends View> extends RecyclerView.Adapter<ViewWrapper<V>> {
+public abstract class BaseRecyclerViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewWrapper<V>> {
 
     protected List<T> items = new ArrayList<T>();
 

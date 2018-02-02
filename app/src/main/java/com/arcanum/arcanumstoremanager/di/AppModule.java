@@ -25,6 +25,8 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.android.DaggerApplication;
 
+import static com.arcanum.arcanumstoremanager.data.database.ArcanumDatabase.DATABASE_NAME;
+
 /**
  * Created by norman on 24/01/18.
  */
@@ -41,7 +43,7 @@ public abstract class AppModule {
     @Provides
     @Singleton
     static ArcanumDatabase provideUserDatabase(DaggerApplication application) {
-        return Room.databaseBuilder(application, ArcanumDatabase.class, "users").build();
+        return Room.databaseBuilder(application, ArcanumDatabase.class, DATABASE_NAME).build();
     }
 
     @Provides

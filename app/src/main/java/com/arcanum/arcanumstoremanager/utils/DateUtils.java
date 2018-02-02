@@ -1,4 +1,4 @@
-package com.arcanum.arcanumstoremanager;
+package com.arcanum.arcanumstoremanager.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,8 +12,8 @@ import java.util.Locale;
 
 public class DateUtils {
 
-    private static String attendanceFormat = "d MMM HH:mm";
-    private static String dateFormat = "EEE MMM dd HH:mm:ss z yyyy";
+    public static String attendanceFormat = "d MMM HH:mm";
+    public static String dateFormat = "EEE MMM dd HH:mm:ss z yyyy";
 
     public static String DateToStringFormatted(Date date, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);

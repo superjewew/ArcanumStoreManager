@@ -3,12 +3,12 @@ package com.arcanum.arcanumstoremanager.feature.attendance;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.arcanum.arcanumstoremanager.R;
-import com.arcanum.arcanumstoremanager.data.VisitDao;
 import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
-import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -31,9 +31,28 @@ public class AttendanceActivity extends DaggerAppCompatActivity implements Atten
 
     private AttendanceAdapter adapter;
 
+    private List<VisitWithName> visits;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_attendance, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_export:
+                presenter.writeToCsv(visits);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @AfterViews
@@ -49,6 +68,7 @@ public class AttendanceActivity extends DaggerAppCompatActivity implements Atten
 
     @Override
     public void updateAdapter(List<VisitWithName> visits) {
+        this.visits = visits;
         adapter = AttendanceAdapter_.getInstance_(this);
         adapter.initItems(visits);
         attendanceList.setAdapter(adapter);

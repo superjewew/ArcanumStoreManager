@@ -18,5 +18,7 @@ public interface AttendanceContract {
 
     interface Presenter {
         void getAttendance();
+
+        void writeToCsv(List<VisitWithName> visits);
     }
 }

@@ -14,6 +14,9 @@ import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 
 @Database(entities = {User.class, Visit.class}, version = 1)
 public abstract class ArcanumDatabase extends RoomDatabase {
+
+    public static final String DATABASE_NAME = "arcanum";
+
     public abstract UserDao userDao();
     public abstract VisitDao visitDao();
 }

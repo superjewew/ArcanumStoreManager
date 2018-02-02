@@ -10,10 +10,7 @@ import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-import java.text.ParseException;
-
-import static com.arcanum.arcanumstoremanager.DateUtils.ConvertDateStringFormat;
-import static com.arcanum.arcanumstoremanager.DateUtils.DateInMillisToStringFormatted;
+import static com.arcanum.arcanumstoremanager.utils.DateUtils.DateInMillisToStringFormatted;
 
 /**
  * Created by norman on 30/01/18.

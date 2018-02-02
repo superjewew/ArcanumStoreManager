@@ -71,7 +71,7 @@ public class DashboardPresenter extends BasePresenter<DashboardContract.View> im
             case WEEKLY:
                 cal.set(Calendar.DAY_OF_WEEK, 1);
             case TODAY:
-                cal.set(Calendar.HOUR, 0);
+                cal.set(Calendar.HOUR_OF_DAY, 0);
                 cal.set(Calendar.MINUTE, 0);
                 cal.set(Calendar.SECOND, 0);
         }
@@ -86,7 +86,7 @@ public class DashboardPresenter extends BasePresenter<DashboardContract.View> im
             case WEEKLY:
                 cal.set(Calendar.DAY_OF_WEEK, 7);
             case TODAY:
-                cal.set(Calendar.HOUR, 23);
+                cal.set(Calendar.HOUR_OF_DAY, 23);
                 cal.set(Calendar.MINUTE, 59);
                 cal.set(Calendar.SECOND, 59);
         }

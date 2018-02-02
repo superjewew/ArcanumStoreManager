@@ -15,6 +15,7 @@ public interface UserRepository {
     Completable createUser(User user);
     Single<List<User>> getAllUser();
     Single<User> getUserByUsername(String username);
+    Single<User> getUserById(int id);
     Completable updateUser(User user);
     void deleteUser(int id);
 }

@@ -1,7 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.useredit;
 
 import com.arcanum.arcanumstoremanager.base.Router;
-import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetUserByIdUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.UpdateUserUseCase;
 import com.arcanum.arcanumstoremanager.feature.RouterImpl;
 
@@ -25,7 +25,7 @@ public class AccountEditActivityModule {
     }
 
     @Provides
-    AccountEditContract.Presenter provideMainPresenter(AccountEditContract.View mainView, GetUserUseCase getUseCase, UpdateUserUseCase updateUserUseCase) {
+    AccountEditContract.Presenter provideMainPresenter(AccountEditContract.View mainView, GetUserByIdUseCase getUseCase, UpdateUserUseCase updateUserUseCase) {
         return new AccountEditPresenter(mainView, getUseCase, updateUserUseCase);
     }
 }

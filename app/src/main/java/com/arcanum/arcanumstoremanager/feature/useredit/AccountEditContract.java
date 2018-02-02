@@ -14,7 +14,7 @@ public interface AccountEditContract {
     }
 
     interface Presenter {
-        void loadUser(String username);
+        void loadUser(int id);
         void updateUser(User user);
     }
 }

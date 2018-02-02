@@ -1,6 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.userdetail;
 
 import com.arcanum.arcanumstoremanager.base.Router;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetUserByIdUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
 import com.arcanum.arcanumstoremanager.feature.RouterImpl;
 
@@ -25,7 +26,7 @@ public class AccountDetailActivityModule {
     }
 
     @Provides
-    AccountDetailContract.Presenter provideMainPresenter(AccountDetailContract.View mainView, GetUserUseCase getUseCase) {
+    AccountDetailContract.Presenter provideMainPresenter(AccountDetailContract.View mainView, GetUserByIdUseCase getUseCase) {
         return new AccountDetailPresenter(mainView, getUseCase);
     }
 }

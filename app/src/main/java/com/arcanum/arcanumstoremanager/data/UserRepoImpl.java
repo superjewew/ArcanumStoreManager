@@ -40,6 +40,11 @@ public class UserRepoImpl implements UserRepository {
     }
 
     @Override
+    public Single<User> getUserById(int id) {
+        return Single.defer(() -> innerGetUserById(id));
+    }
+
+    @Override
     public Completable updateUser(User user) {
         return Completable.defer(() -> innerUpdateUser(user));
     }
@@ -59,6 +64,10 @@ public class UserRepoImpl implements UserRepository {
 
     private Single<User> innerGetUserByUsername(String username) {
         return db.userDao().getUserByUsername(username);
+    }
+
+    private Single<User> innerGetUserById(int id) {
+        return db.userDao().getUserById(id);
     }
 
     private Single<List<User>> innerGetAllUsers() {

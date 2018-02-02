@@ -2,6 +2,7 @@ package com.arcanum.arcanumstoremanager.feature.userdetail;
 
 import com.arcanum.arcanumstoremanager.base.BasePresenter;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
+import com.arcanum.arcanumstoremanager.domain.usecase.GetUserByIdUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
 
 import javax.inject.Inject;
@@ -15,18 +16,18 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AccountDetailPresenter extends BasePresenter<AccountDetailContract.View> implements AccountDetailContract.Presenter {
 
-    private GetUserUseCase getUserUseCase;
+    private GetUserByIdUseCase getUserUseCase;
 
     @Inject
     public AccountDetailPresenter(AccountDetailContract.View view,
-                                  GetUserUseCase getUseCase) {
+                                  GetUserByIdUseCase getUseCase) {
         attachView(view);
         getUserUseCase = getUseCase;
     }
 
     @Override
-    public void loadUser(String username) {
-        getUserUseCase.execute(username)
+    public void loadUser(int id) {
+        getUserUseCase.execute(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onSuccess, this::onFailed);

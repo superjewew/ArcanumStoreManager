@@ -23,7 +23,7 @@ public interface Router {
 
     void showAccountsScreen();
 
-    void showAccountDetailScreen(String username);
+    void showAccountDetailScreen(int id);
 
-    void showAccountEditScreen(String username);
+    void showAccountEditScreen(int id);
 }

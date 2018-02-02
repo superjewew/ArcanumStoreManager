@@ -34,4 +34,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM user WHERE username = :username")
     public Single<User> getUserByUsername(String username);
+
+    @Query("SELECT * FROM user WHERE id = :id")
+    public Single<User> getUserById(int id);
 }

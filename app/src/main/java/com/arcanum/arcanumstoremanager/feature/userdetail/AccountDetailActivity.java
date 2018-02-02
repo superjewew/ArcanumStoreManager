@@ -44,7 +44,7 @@ public class AccountDetailActivity extends DaggerAppCompatActivity implements Ac
     Router router;
 
     @Extra
-    String username;
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class AccountDetailActivity extends DaggerAppCompatActivity implements Ac
 
     @AfterViews
     public void initAfterExtras() {
-        presenter.loadUser(username);
+        presenter.loadUser(userId);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class AccountDetailActivity extends DaggerAppCompatActivity implements Ac
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_edit:
-                router.showAccountEditScreen(username);
+                router.showAccountEditScreen(userId);
                 return true;
         }
 

@@ -48,7 +48,7 @@ public class AccountEditActivity extends DaggerAppCompatActivity implements Acco
     Router router;
 
     @Extra
-    String username;
+    int userId;
 
     private ArrayAdapter<CharSequence> adapter;
 
@@ -66,7 +66,7 @@ public class AccountEditActivity extends DaggerAppCompatActivity implements Acco
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         passSpin.setAdapter(adapter);
 
-        presenter.loadUser(username);
+        presenter.loadUser(userId);
     }
 
     @ItemSelect(R.id.pass_spinner)

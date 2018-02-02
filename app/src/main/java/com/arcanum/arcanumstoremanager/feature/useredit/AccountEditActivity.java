@@ -109,6 +109,7 @@ public class AccountEditActivity extends DaggerAppCompatActivity implements Acco
 
     @Override
     public void closeScreen() {
+        router.showAccountDetailScreen(user.id);
         router.closeScreen();
     }
 

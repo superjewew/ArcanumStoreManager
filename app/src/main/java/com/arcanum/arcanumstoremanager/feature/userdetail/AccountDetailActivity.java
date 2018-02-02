@@ -67,11 +67,20 @@ public class AccountDetailActivity extends DaggerAppCompatActivity implements Ac
         switch (item.getItemId()) {
             case R.id.menu_edit:
                 router.showAccountEditScreen(userId);
+                router.closeScreen();
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onBackPressed() {
+        router.showAccountsScreen();
+        router.closeScreen();
+    }
+
     @Override
     public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

@@ -60,4 +60,9 @@ dependencies {
 
     // Room & RxJava
     implementation "android.arch.persistence.room:rxjava2:1.1.0-alpha1"
+
+    // Permission Dispatcher
+    implementation 'com.github.hotchemi:permissionsdispatcher:3.1.0'
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:3.1.0'
+    annotationProcessor "com.github.AleksanderMielczarek:AndroidAnnotationsPermissionsDispatcherPlugin:2.1.1"
 }

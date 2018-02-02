@@ -1,6 +1,8 @@
 package com.arcanum.arcanumstoremanager.feature.attendance;
 
+import android.Manifest;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -19,7 +21,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import dagger.android.support.DaggerAppCompatActivity;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
 
+@RuntimePermissions
 @EActivity(R.layout.activity_attendance)
 public class AttendanceActivity extends DaggerAppCompatActivity implements AttendanceContract.View {
 
@@ -48,11 +53,16 @@ public class AttendanceActivity extends DaggerAppCompatActivity implements Atten
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_export:
-                presenter.writeToCsv(visits);
+                AttendanceActivityPermissionsDispatcher.onExportClickedWithPermissionCheck(this);
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void onExportClicked() {
+        presenter.writeToCsv(visits);
     }
 
     @AfterViews
@@ -72,5 +82,12 @@ public class AttendanceActivity extends DaggerAppCompatActivity implements Atten
         adapter = AttendanceAdapter_.getInstance_(this);
         adapter.initItems(visits);
         attendanceList.setAdapter(adapter);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        AttendanceActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 }

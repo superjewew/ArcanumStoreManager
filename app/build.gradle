@@ -65,4 +65,8 @@ dependencies {
     implementation 'com.github.hotchemi:permissionsdispatcher:3.1.0'
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:3.1.0'
     annotationProcessor "com.github.AleksanderMielczarek:AndroidAnnotationsPermissionsDispatcherPlugin:2.1.1"
+
+    implementation 'com.google.firebase:firebase-core:11.8.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

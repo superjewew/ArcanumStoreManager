@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "824358550934",
+    "firebase_url": "https://arcanum-store-manager.firebaseio.com",
+    "project_id": "arcanum-store-manager",
+    "storage_bucket": "arcanum-store-manager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824358550934:android:662ad846d3d20148",
+        "android_client_info": {
+          "package_name": "com.arcanum.arcanumstoremanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824358550934-82i3gv5dqee11992d5bj0f8bi7du1n7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADol5xkbbuXok2nuXRnT17o94q5XwkoIs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

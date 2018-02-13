@@ -11,6 +11,8 @@ import com.arcanum.arcanumstoremanager.utils.DateUtils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -82,4 +84,31 @@ public class AttendancePresenter extends BasePresenter<AttendanceContract.View> 
         mView.showError(throwable.getLocalizedMessage());
     }
 
+    private List<VisitWithName> insertHeader(List<VisitWithName> visits) {
+        List<VisitWithName> toBeAdded = new ArrayList<>();
+        List<VisitWithName> result = new ArrayList<>();
+        result.addAll(visits);
+
+        if(visits.size() != 0) {
+            Calendar cal = Calendar.getInstance();
+            for (int i = 0; i < visits.size(); i++) {
+                Calendar visitCal = DateUtils.MillisToCalendar(0);
+                if (visitCal.get(Calendar.DAY_OF_MONTH) != cal.get(Calendar.DAY_OF_MONTH)) {
+                    VisitWithName header = new VisitWithName();
+                    header.visittime = cal.getTimeInMillis();
+                    header.username = String.valueOf(i);
+                    header.fullname = "";
+                    toBeAdded.add(header);
+                    cal = visitCal;
+                }
+            }
+
+            for (VisitWithName header : toBeAdded) {
+                result.add(Integer.valueOf(header.username), header);
+            }
+
+        }
+
+        return result;
+    }
 }

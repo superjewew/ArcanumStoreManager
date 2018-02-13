@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class DateUtils {
 
-    public static String attendanceFormat = "d MMM HH:mm";
+    public static String attendanceFormat = "HH:mm";
     public static String dateFormat = "EEE MMM dd HH:mm:ss z yyyy";
 
     public static String DateToStringFormatted(Date date, String format) {
@@ -50,5 +50,11 @@ public class DateUtils {
 
     public static String ConvertDateStringFormat(String string, String oldFormat, String newFormat) throws ParseException {
         return DateToStringFormatted(StringFormattedToDate(string, oldFormat), newFormat);
+    }
+
+    public static Calendar MillisToCalendar(long timeInMillis) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(timeInMillis);
+        return cal;
     }
 }

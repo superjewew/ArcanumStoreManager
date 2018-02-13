@@ -1,5 +1,7 @@
 package com.arcanum.arcanumstoremanager.base;
 
+import java.util.List;
+
 import io.reactivex.Single;
 
 /**

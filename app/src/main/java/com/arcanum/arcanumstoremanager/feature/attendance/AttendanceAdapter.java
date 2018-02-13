@@ -5,9 +5,7 @@ import android.view.ViewGroup;
 
 import com.arcanum.arcanumstoremanager.base.BaseRecyclerViewAdapter;
 import com.arcanum.arcanumstoremanager.base.ViewWrapper;
-import com.arcanum.arcanumstoremanager.data.VisitDao;
 import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
-import com.arcanum.arcanumstoremanager.domain.entity.Visit;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;

@@ -9,13 +9,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.arcanum.arcanumstoremanager.HeaderItemDecoration;
 import com.arcanum.arcanumstoremanager.R;
 import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
+import com.arcanum.arcanumstoremanager.utils.DateUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -81,6 +84,21 @@ public class AttendanceActivity extends DaggerAppCompatActivity implements Atten
         this.visits = visits;
         adapter = AttendanceAdapter_.getInstance_(this);
         adapter.initItems(visits);
+        attendanceList.addItemDecoration(new HeaderItemDecoration(
+                getResources().getDimensionPixelSize(R.dimen.recycler_section_header_height),
+                true,
+                new HeaderItemDecoration.SectionCallback() {
+                    @Override
+                    public boolean isSection(int position) {
+                        return position == 0 || !compareDayIsSame(visits.get(position).visittime, visits.get(position - 1).visittime);
+                    }
+
+                    @Override
+                    public CharSequence getSectionHeader(int position) {
+                        return getDate(visits.get(position));
+                    }
+                }
+        ));
         attendanceList.setAdapter(adapter);
     }
 
@@ -89,5 +107,18 @@ public class AttendanceActivity extends DaggerAppCompatActivity implements Atten
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         AttendanceActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+
+    private boolean compareDayIsSame(long time1, long time2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTimeInMillis(time1);
+        cal2.setTimeInMillis(time2);
+
+        return cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
+    }
+
+    private CharSequence getDate(VisitWithName visit) {
+        return DateUtils.DateInMillisToStringFormatted(visit.visittime, "d MMMM");
     }
 }

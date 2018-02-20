@@ -18,6 +18,8 @@ import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsBetweenDateUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.RegisterUseCase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import javax.inject.Singleton;
 
@@ -48,8 +50,8 @@ public abstract class AppModule {
 
     @Provides
     @Singleton
-    static UserRepository provideRepository(ArcanumDatabase db) {
-        return new UserRepoImpl(db);
+    static UserRepository provideRepository(ArcanumDatabase db, DatabaseReference remoteDb) {
+        return new UserRepoImpl(db, remoteDb);
     }
 
     @Provides
@@ -93,4 +95,11 @@ public abstract class AppModule {
     static GetVisitsBetweenDateUseCase provideGetVisitBetweenDatesUseCase(VisitRepository repository) {
         return new GetVisitsBetweenDateUseCase(repository);
     }
+
+    @Provides
+    @Singleton
+    static DatabaseReference provideDatabaseReference() {
+        return FirebaseDatabase.getInstance().getReference();
+    }
+
 }

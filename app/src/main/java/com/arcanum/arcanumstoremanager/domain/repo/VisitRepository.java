@@ -1,6 +1,7 @@
 package com.arcanum.arcanumstoremanager.domain.repo;
 
 import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
+import com.arcanum.arcanumstoremanager.domain.entity.User;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import io.reactivex.Single;
  */
 
 public interface VisitRepository {
-    Completable createVisit(String username);
+    Completable createVisit(User user);
     Single<List<VisitWithName>> getAllVisits();
     Single<List<VisitWithName>> getAllVisitsBetween(Long start, Long end);
 }

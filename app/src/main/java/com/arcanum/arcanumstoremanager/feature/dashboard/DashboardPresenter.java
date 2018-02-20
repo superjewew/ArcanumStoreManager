@@ -1,10 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.dashboard;
 
 import com.arcanum.arcanumstoremanager.base.BasePresenter;
-import com.arcanum.arcanumstoremanager.data.VisitDao;
 import com.arcanum.arcanumstoremanager.data.VisitDao.VisitWithName;
-import com.arcanum.arcanumstoremanager.domain.entity.Visit;
-import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsBetweenDateUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsUseCase;
 import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardContract.VisitFilterType;
 

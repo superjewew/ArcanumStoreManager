@@ -12,7 +12,7 @@ import io.reactivex.Completable;
  * Created by norman on 29/01/18.
  */
 
-public class CreateVisitUseCase implements CompletableUseCase<String> {
+public class CreateVisitUseCase implements CompletableUseCase<User> {
 
     private VisitRepository repo;
 
@@ -22,7 +22,7 @@ public class CreateVisitUseCase implements CompletableUseCase<String> {
     }
 
     @Override
-    public Completable execute(String param) {
-        return repo.createVisit(param);
+    public Completable execute(User user) {
+        return repo.createVisit(user);
     }
 }

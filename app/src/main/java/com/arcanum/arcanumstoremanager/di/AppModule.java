@@ -56,8 +56,8 @@ public abstract class AppModule {
 
     @Provides
     @Singleton
-    static VisitRepository provideVisitRepository(ArcanumDatabase db) {
-        return new VisitRepoImpl(db);
+    static VisitRepository provideVisitRepository(ArcanumDatabase db, DatabaseReference remoteDb) {
+        return new VisitRepoImpl(db, remoteDb);
     }
 
     @Provides

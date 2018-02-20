@@ -11,9 +11,13 @@ import java.util.List;
 public interface AccountsContract {
     interface View {
         void updateAdapter(List<User> users);
+
+        void showMessage(String message);
     }
 
     interface Presenter {
         void loadData();
+
+        void writeToCsv(List<User> users);
     }
 }

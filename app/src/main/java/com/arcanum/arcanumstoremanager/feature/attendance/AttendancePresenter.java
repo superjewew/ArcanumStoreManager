@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -77,6 +78,7 @@ public class AttendancePresenter extends BasePresenter<AttendanceContract.View> 
     }
 
     private void onSuccess(List<VisitWithName> visits) {
+        Collections.sort(visits);
         mView.updateAdapter(visits);
     }
 

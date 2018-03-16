@@ -69,7 +69,7 @@ public class ProductListActivity extends DaggerAppCompatActivity implements Prod
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_add_product:
-                router.showProductEditScreen(0);
+                router.showProductEditScreen("");
                 return true;
         }
         return super.onOptionsItemSelected(item);

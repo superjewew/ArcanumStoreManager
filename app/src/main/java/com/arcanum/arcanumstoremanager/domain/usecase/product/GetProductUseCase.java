@@ -12,7 +12,7 @@ import io.reactivex.Single;
  * Created by norman on 16/03/18.
  */
 
-public class GetProductUseCase implements BaseUseCaseWithParam<Long, Product> {
+public class GetProductUseCase implements BaseUseCaseWithParam<String, Product> {
 
     private ProductRepository repository;
 
@@ -22,7 +22,7 @@ public class GetProductUseCase implements BaseUseCaseWithParam<Long, Product> {
     }
 
     @Override
-    public Single<Product> execute(Long param) {
+    public Single<Product> execute(String param) {
         return repository.getProduct(param);
     }
 }

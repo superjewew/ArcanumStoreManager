@@ -14,7 +14,7 @@ import io.reactivex.Single;
 public interface ProductRepository {
     Completable addProduct(Product item);
     Single<List<Product>> getAllProducts();
-    Single<Product> getProduct(long productCode);
+    Single<Product> getProduct(String productCode);
     Completable updateProduct(Product item);
     Completable deleteProduct(Product item);
 }

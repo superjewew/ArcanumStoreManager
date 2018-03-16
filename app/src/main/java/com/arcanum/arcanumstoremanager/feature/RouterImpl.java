@@ -66,7 +66,7 @@ public class RouterImpl implements Router {
     }
 
     @Override
-    public void showProductEditScreen(long productCode) {
+    public void showProductEditScreen(String productCode) {
         ProductEditActivity_.intent(activity).productCode(productCode).start();
     }
 

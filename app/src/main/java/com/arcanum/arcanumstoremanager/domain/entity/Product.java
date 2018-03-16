@@ -5,18 +5,18 @@ package com.arcanum.arcanumstoremanager.domain.entity;
  */
 
 public class Product {
-    private long code;
+    private String code;
     private String name;
     private double price;
     private double cost;
     private int stock;
     private boolean demoAvailable;
 
-    public long getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

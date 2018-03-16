@@ -39,7 +39,7 @@ public class ProductRepoImpl implements ProductRepository {
     }
 
     @Override
-    public Single<Product> getProduct(long productCode) {
+    public Single<Product> getProduct(String productCode) {
         return Single.defer(() -> innerGetProduct(productCode));
     }
 
@@ -57,13 +57,13 @@ public class ProductRepoImpl implements ProductRepository {
         return RxFirebaseDatabase.setValue(getProductDbReference(item.getCode()), item);
     }
 
-    private Single<Product> innerGetProduct(long productCode) {
+    private Single<Product> innerGetProduct(String productCode) {
         return RxFirebaseDatabase
                 .observeSingleValueEvent(getProductDbReference(productCode), Product.class)
                 .toSingle();
     }
 
-    private DatabaseReference getProductDbReference(long productCode) {
+    private DatabaseReference getProductDbReference(String productCode) {
         return productRemoteDb.child("product").child("" + productCode);
     }
 }

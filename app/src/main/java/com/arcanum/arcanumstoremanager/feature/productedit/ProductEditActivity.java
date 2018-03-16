@@ -61,11 +61,11 @@ public class ProductEditActivity extends DaggerAppCompatActivity implements Prod
     Router router;
 
     @Extra
-    long productCode;
+    String productCode;
 
     @AfterViews
     public void initAfterViews() {
-        if(productCode != 0) {
+        if(productCode != null && !productCode.equals("")) {
             mPresenter.loadProduct(productCode);
         }
     }
@@ -121,6 +121,11 @@ public class ProductEditActivity extends DaggerAppCompatActivity implements Prod
     }
 
     @Override
+    public void exit() {
+        router.closeScreen();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_edit, menu);
         return true;
@@ -139,9 +144,17 @@ public class ProductEditActivity extends DaggerAppCompatActivity implements Prod
     private Product createProductFromField() {
         Product product = new Product();
         product.setName(productNameEt.getText().toString());
-        product.setPrice(Double.parseDouble(productPriceEt.getText().toString()));
-        product.setCode(Integer.parseInt(productCodeEt.getText().toString()));
-        product.setStock(Integer.parseInt(productStockEt.getText().toString()));
+        try {
+            product.setPrice(Double.parseDouble(productPriceEt.getText().toString()));
+        } catch(NumberFormatException e) {
+            showPriceError(true);
+        }
+        product.setCode(productCodeEt.getText().toString());
+        try {
+            product.setStock(Integer.parseInt(productStockEt.getText().toString()));
+        } catch(NumberFormatException e) {
+            showStockError(true);
+        }
         product.setDemoAvailable(productDemoSw.isChecked());
         return product;
     }

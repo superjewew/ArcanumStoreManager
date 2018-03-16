@@ -21,7 +21,7 @@ public interface Router {
 
     void showProductDetailScreen();
 
-    void showProductEditScreen(long productCode);
+    void showProductEditScreen(String productCode);
 
     void showAccountsScreen();
 

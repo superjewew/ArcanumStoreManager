@@ -24,7 +24,7 @@ public class ProductEditPresenter extends BasePresenter<ProductEditContract.View
     }
 
     @Override
-    public void loadProduct(long code) {
+    public void loadProduct(String code) {
         getProductUseCase.execute(code)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -46,7 +46,7 @@ public class ProductEditPresenter extends BasePresenter<ProductEditContract.View
     }
 
     private void onProductSaved() {
-
+        mView.exit();
     }
 
     private void onError(Throwable throwable) {
@@ -58,6 +58,10 @@ public class ProductEditPresenter extends BasePresenter<ProductEditContract.View
         clearError();
 
         if(item.getName().equals("")) {
+            mView.showNameError(true);
+            valid = false;
+        }
+        if(item.getCode().equals("")) {
             mView.showNameError(true);
             valid = false;
         }

@@ -19,10 +19,12 @@ public interface ProductEditContract {
         void showCodeError(boolean show);
 
         void showStockError(boolean show);
+
+        void exit();
     }
 
     interface Presenter {
-        void loadProduct(long code);
+        void loadProduct(String code);
 
         void saveProduct(Product item);
     }

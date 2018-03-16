@@ -1,6 +1,6 @@
 package com.arcanum.arcanumstoremanager.domain.repo;
 
-import com.arcanum.arcanumstoremanager.domain.entity.ProductItem;
+import com.arcanum.arcanumstoremanager.domain.entity.Product;
 
 import java.util.List;
 
@@ -12,7 +12,9 @@ import io.reactivex.Single;
  */
 
 public interface ProductRepository {
-    Completable createProduct(ProductItem item);
-    Single<List<ProductItem>> getAllProducts();
-    Completable updateProduct(ProductItem item);
+    Completable addProduct(Product item);
+    Single<List<Product>> getAllProducts();
+    Single<Product> getProduct(long productCode);
+    Completable updateProduct(Product item);
+    Completable deleteProduct(Product item);
 }

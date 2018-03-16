@@ -75,7 +75,7 @@ public class UserRepoImpl implements UserRepository {
     }
     
     private Completable innerUpdateUser(User user) {
-        return Completable.fromAction(() -> db.userDao().updateUsers(user));
+        return innerCreateUser(user);
     }
 
     private Single<User> innerGetUserByUsername(String username) {

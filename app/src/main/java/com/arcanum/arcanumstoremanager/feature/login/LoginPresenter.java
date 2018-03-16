@@ -3,6 +3,7 @@ package com.arcanum.arcanumstoremanager.feature.login;
 import com.arcanum.arcanumstoremanager.base.BasePresenter;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
+import com.arcanum.arcanumstoremanager.utils.EncryptUtils;
 
 import javax.inject.Inject;
 
@@ -34,7 +35,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         if(username.equals(admin_test) && password.equals(admin_pass)) {
             mView.showAdminScreen();
         } else {
-            getUserUseCase.execute(username)
+            getUserUseCase.execute(username.toLowerCase())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(this::onSuccess, this::onFailed);
@@ -43,10 +44,12 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
     private void onSuccess(User user) {
         //TODO : Clean up this code
-        if(user.getPassword().equals(pass)) {
-            mView.showLoggedScreen(user.getUsername());
-        } else {
-            mView.showError("Wrong Password");
+        if(user != null) {
+            if(EncryptUtils.validatePassword(pass, user.getPassword())) {
+                mView.showLoggedScreen(user.getUsername());
+            } else {
+                mView.showError("Wrong Password");
+            }
         }
     }
 

@@ -14,6 +14,6 @@ public interface AccountDetailContract {
     }
 
     interface Presenter {
-        void loadUser(int id);
+        void loadUser(String username);
     }
 }

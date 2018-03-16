@@ -54,6 +54,7 @@
                 android:id="@+id/fullname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
                 android:hint="Full Name (Required)"/>
         </android.support.design.widget.TextInputLayout>
         <TextView
@@ -84,6 +85,7 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
                 android:hint="Email"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -99,6 +101,7 @@
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:hint="No. Handphone"/>
         </android.support.design.widget.TextInputLayout>
 

@@ -13,7 +13,6 @@ import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.domain.repo.UserRepository;
 import com.arcanum.arcanumstoremanager.domain.repo.VisitRepository;
 import com.arcanum.arcanumstoremanager.domain.usecase.CreateVisitUseCase;
-import com.arcanum.arcanumstoremanager.domain.usecase.GetUserByIdUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetUserUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsBetweenDateUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.GetVisitsUseCase;
@@ -74,12 +73,6 @@ public abstract class AppModule {
 
     @Provides
     @Singleton
-    static BaseUseCaseWithParam<Integer, User> provideGetUserByIdUseCase(UserRepository repository) {
-        return new GetUserByIdUseCase(repository);
-    }
-
-    @Provides
-    @Singleton
     static CreateVisitUseCase provideUpdateUseCase(VisitRepository repository) {
         return new CreateVisitUseCase(repository);
     }
@@ -99,6 +92,7 @@ public abstract class AppModule {
     @Provides
     @Singleton
     static DatabaseReference provideDatabaseReference() {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         return FirebaseDatabase.getInstance().getReference();
     }
 

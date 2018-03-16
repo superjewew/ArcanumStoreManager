@@ -1,5 +1,6 @@
 package com.arcanum.arcanumstoremanager.feature.logged;
 
+import android.support.annotation.MainThread;
 import android.util.Log;
 
 import com.arcanum.arcanumstoremanager.base.BasePresenter;
@@ -43,6 +44,7 @@ public class LoggedPresenter extends BasePresenter<LoggedContract.View> implemen
         detachView();
     }
 
+    @MainThread
     private void onFailed(Throwable throwable) {
         mView.showError(throwable.getLocalizedMessage());
     }

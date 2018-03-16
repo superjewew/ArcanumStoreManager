@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.AppCompatSpinner;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.arcanum.arcanumstoremanager.R;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
 import com.arcanum.arcanumstoremanager.base.Router;
+import com.arcanum.arcanumstoremanager.utils.EncryptUtils;
 
 import org.androidannotations.annotations.AfterExtras;
 import org.androidannotations.annotations.AfterViews;
@@ -20,6 +22,10 @@ import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ItemSelect;
 import org.androidannotations.annotations.ViewById;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.NoSuchPaddingException;
 import javax.inject.Inject;
 
 import dagger.android.support.DaggerAppCompatActivity;
@@ -124,8 +130,8 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
 
     private User createUserFromField() {
         return new User.Builder()
-                .username(usernameEt.getText().toString())
-                .password(passwordEt.getText().toString())
+                .username(usernameEt.getText().toString().toLowerCase())
+                .password(EncryptUtils.encrypt(passwordEt.getText().toString()))
                 .fullname(fullnameEt.getText().toString())
                 .email(emailEt.getText().toString())
                 .phone(phoneEt.getText().toString())

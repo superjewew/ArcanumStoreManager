@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -68,9 +69,13 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:11.8.0'
     implementation 'com.google.firebase:firebase-database:11.8.0'
-    implementation 'com.google.firebase:firebase-auth:11.8.0'
 
     implementation 'com.github.frangsierra:rx2firebase:1.4.0'
+
+    implementation 'com.madgag.spongycastle:core:1.54.0.0'
+    implementation 'com.madgag.spongycastle:prov:1.54.0.0'
+
+    implementation 'com.android.support:multidex:1.0.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

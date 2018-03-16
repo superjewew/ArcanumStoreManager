@@ -69,12 +69,12 @@ public class RouterImpl implements Router {
     }
 
     @Override
-    public void showAccountDetailScreen(int id) {
-        AccountDetailActivity_.intent(activity).userId(id).start();
+    public void showAccountDetailScreen(String username) {
+        AccountDetailActivity_.intent(activity).username(username).start();
     }
 
     @Override
-    public void showAccountEditScreen(int id) {
-        AccountEditActivity_.intent(activity).userId(id).start();
+    public void showAccountEditScreen(String username) {
+        AccountEditActivity_.intent(activity).username(username).start();
     }
 }

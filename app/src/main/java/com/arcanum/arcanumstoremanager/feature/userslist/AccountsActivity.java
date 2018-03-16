@@ -59,7 +59,7 @@ public class AccountsActivity extends DaggerAppCompatActivity implements Account
         adapter = AccountsAdapter_.getInstance_(this);
         adapter.initItems(users);
         adapter.listener = v -> {
-            router.showAccountDetailScreen(((User) v.getTag()).id);
+            router.showAccountDetailScreen(((User) v.getTag()).getUsername());
             router.closeScreen();
         };
         accountList.setAdapter(adapter);

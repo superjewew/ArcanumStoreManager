@@ -4,14 +4,15 @@ package com.arcanum.arcanumstoremanager.domain.entity;
  * Created by norman on 24/01/18.
  */
 
-public class ProductItem {
-    private int code;
+public class Product {
+    private long code;
     private String name;
     private double price;
     private double cost;
     private int stock;
+    private boolean demoAvailable;
 
-    public int getCode() {
+    public long getCode() {
         return code;
     }
 
@@ -49,5 +50,13 @@ public class ProductItem {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public boolean isDemoAvailable() {
+        return demoAvailable;
+    }
+
+    public void setDemoAvailable(boolean demoAvailable) {
+        this.demoAvailable = demoAvailable;
     }
 }

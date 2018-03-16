@@ -6,10 +6,12 @@ import android.content.Context;
 
 import com.arcanum.arcanumstoremanager.base.BaseUseCaseWithParam;
 import com.arcanum.arcanumstoremanager.base.CompletableUseCase;
+import com.arcanum.arcanumstoremanager.data.ProductRepoImpl;
 import com.arcanum.arcanumstoremanager.data.UserRepoImpl;
 import com.arcanum.arcanumstoremanager.data.VisitRepoImpl;
 import com.arcanum.arcanumstoremanager.data.database.ArcanumDatabase;
 import com.arcanum.arcanumstoremanager.domain.entity.User;
+import com.arcanum.arcanumstoremanager.domain.repo.ProductRepository;
 import com.arcanum.arcanumstoremanager.domain.repo.UserRepository;
 import com.arcanum.arcanumstoremanager.domain.repo.VisitRepository;
 import com.arcanum.arcanumstoremanager.domain.usecase.CreateVisitUseCase;
@@ -57,6 +59,12 @@ public abstract class AppModule {
     @Singleton
     static VisitRepository provideVisitRepository(ArcanumDatabase db, DatabaseReference remoteDb) {
         return new VisitRepoImpl(db, remoteDb);
+    }
+
+    @Provides
+    @Singleton
+    static ProductRepository provideProductRepository(DatabaseReference remoteDb) {
+        return new ProductRepoImpl(remoteDb);
     }
 
     @Provides

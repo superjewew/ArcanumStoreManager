@@ -6,6 +6,8 @@ import com.arcanum.arcanumstoremanager.base.Router;
 import com.arcanum.arcanumstoremanager.feature.attendance.AttendanceActivity_;
 import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardActivity_;
 import com.arcanum.arcanumstoremanager.feature.logged.LoggedActivity_;
+import com.arcanum.arcanumstoremanager.feature.productedit.ProductEditActivity_;
+import com.arcanum.arcanumstoremanager.feature.productlist.ProductListActivity_;
 import com.arcanum.arcanumstoremanager.feature.register.RegisterActivity_;
 import com.arcanum.arcanumstoremanager.feature.userdetail.AccountDetailActivity_;
 import com.arcanum.arcanumstoremanager.feature.useredit.AccountEditActivity_;
@@ -54,13 +56,18 @@ public class RouterImpl implements Router {
     }
 
     @Override
-    public void showInventoryScreen() {
-
+    public void showProductList() {
+        ProductListActivity_.intent(activity).start();
     }
 
     @Override
     public void showProductDetailScreen() {
 
+    }
+
+    @Override
+    public void showProductEditScreen(long productCode) {
+        ProductEditActivity_.intent(activity).productCode(productCode).start();
     }
 
     @Override

@@ -17,13 +17,17 @@ public interface Router {
 
     void showSalesScreen();
 
-    void showInventoryScreen();
+    void showProductList();
 
     void showProductDetailScreen();
+
+    void showProductEditScreen(long productCode);
 
     void showAccountsScreen();
 
     void showAccountDetailScreen(String username);
 
     void showAccountEditScreen(String username);
+
+
 }

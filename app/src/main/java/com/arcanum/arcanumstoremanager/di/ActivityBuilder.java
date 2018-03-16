@@ -8,6 +8,10 @@ import com.arcanum.arcanumstoremanager.feature.logged.LoggedActivityModule;
 import com.arcanum.arcanumstoremanager.feature.logged.LoggedActivity_;
 import com.arcanum.arcanumstoremanager.feature.login.LoginActivityModule;
 import com.arcanum.arcanumstoremanager.feature.login.LoginActivity_;
+import com.arcanum.arcanumstoremanager.feature.productedit.ProductEditActivityModule;
+import com.arcanum.arcanumstoremanager.feature.productedit.ProductEditActivity_;
+import com.arcanum.arcanumstoremanager.feature.productlist.ProductListActivityModule;
+import com.arcanum.arcanumstoremanager.feature.productlist.ProductListActivity_;
 import com.arcanum.arcanumstoremanager.feature.register.RegisterActivityModule;
 import com.arcanum.arcanumstoremanager.feature.register.RegisterActivity_;
 import com.arcanum.arcanumstoremanager.feature.userdetail.AccountDetailActivityModule;
@@ -50,4 +54,10 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = AccountEditActivityModule.class)
     abstract AccountEditActivity_ bindAccountEditActivity();
+
+    @ContributesAndroidInjector(modules = ProductListActivityModule.class)
+    abstract ProductListActivity_ bindProductListActivity();
+
+    @ContributesAndroidInjector(modules = ProductEditActivityModule.class)
+    abstract ProductEditActivity_ bindProductEdittActivity();
 }

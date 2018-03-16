@@ -94,8 +94,9 @@ public class DashboardActivity extends DaggerAppCompatActivity implements Dashbo
         mRouter.showSalesScreen();
     }
 
+    @Click(R.id.sales_detail_tv)
     @Override
     public void showInventoryScreen() {
-        mRouter.showInventoryScreen();
+        mRouter.showProductList();
     }
 }

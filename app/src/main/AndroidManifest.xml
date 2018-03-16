@@ -31,6 +31,7 @@
         <activity android:name=".feature.userdetail.AccountDetailActivity_" />
         <activity android:name=".feature.useredit.AccountEditActivity_"/>
         <activity android:name=".feature.productlist.ProductListActivity_"/>
+        <activity android:name=".feature.productedit.ProductEditActivity_"/>
     </application>
 
 </manifest>

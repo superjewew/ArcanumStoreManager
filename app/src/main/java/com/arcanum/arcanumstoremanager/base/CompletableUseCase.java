@@ -7,5 +7,5 @@ import io.reactivex.Completable;
  */
 
 public interface CompletableUseCase<P> {
-    Completable execute(P param);
+    Completable execute(P param) throws Exception;
 }

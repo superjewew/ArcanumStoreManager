@@ -4,6 +4,8 @@ import com.arcanum.arcanumstoremanager.base.BasePresenter;
 import com.arcanum.arcanumstoremanager.domain.entity.Product;
 import com.arcanum.arcanumstoremanager.domain.usecase.product.GetProductUseCase;
 import com.arcanum.arcanumstoremanager.domain.usecase.product.UpdateProductUseCase;
+import com.arcanum.arcanumstoremanager.exception.EmptyNameException;
+import com.arcanum.arcanumstoremanager.exception.EmptyProductCodeException;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -33,11 +35,17 @@ public class ProductEditPresenter extends BasePresenter<ProductEditContract.View
 
     @Override
     public void saveProduct(Product item) {
-        if(isValid(item)) {
+        clearError();
+
+        try {
             updateProductUseCase.execute(item)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(this::onProductSaved, this::onError);
+        } catch (EmptyNameException e) {
+            mView.showNameError(true);
+        } catch (EmptyProductCodeException e) {
+            mView.showCodeError(true);
         }
     }
 
@@ -51,22 +59,6 @@ public class ProductEditPresenter extends BasePresenter<ProductEditContract.View
 
     private void onError(Throwable throwable) {
         mView.showError(throwable.getLocalizedMessage());
-    }
-
-    private boolean isValid(Product item) {
-        boolean valid = true;
-        clearError();
-
-        if(item.getName().equals("")) {
-            mView.showNameError(true);
-            valid = false;
-        }
-        if(item.getCode().equals("")) {
-            mView.showNameError(true);
-            valid = false;
-        }
-
-        return valid;
     }
 
     private void clearError() {

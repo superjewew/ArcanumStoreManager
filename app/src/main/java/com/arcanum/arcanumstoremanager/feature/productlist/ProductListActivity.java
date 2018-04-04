@@ -48,9 +48,7 @@ public class ProductListActivity extends DaggerAppCompatActivity implements Prod
     public void showProducts(List<Product> products) {
         adapter = ProductListAdapter_.getInstance_(this);
         adapter.initItems(products);
-        adapter.listener = v -> {
-
-        };
+        adapter.listener = v -> router.showProductEditScreen(((Product) v.getTag()).getCode());
         productList.setAdapter(adapter);
     }
 

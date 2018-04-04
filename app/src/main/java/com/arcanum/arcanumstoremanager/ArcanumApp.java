@@ -1,5 +1,8 @@
 package com.arcanum.arcanumstoremanager;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import com.arcanum.arcanumstoremanager.di.DaggerAppComponent;
 
 import dagger.android.AndroidInjector;
@@ -10,6 +13,12 @@ import dagger.android.DaggerApplication;
  */
 
 public class ArcanumApp extends DaggerApplication {
+
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(context);
+        MultiDex.install(this);
+    }
 
     @Override
     protected AndroidInjector<? extends DaggerApplication> applicationInjector() {

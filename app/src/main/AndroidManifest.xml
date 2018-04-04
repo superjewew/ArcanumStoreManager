@@ -29,9 +29,12 @@
         <activity android:name=".feature.attendance.AttendanceActivity_" />
         <activity android:name=".feature.userslist.AccountsActivity_" />
         <activity android:name=".feature.userdetail.AccountDetailActivity_" />
-        <activity android:name=".feature.useredit.AccountEditActivity_"/>
-        <activity android:name=".feature.productlist.ProductListActivity_"/>
-        <activity android:name=".feature.productedit.ProductEditActivity_"/>
+        <activity android:name=".feature.useredit.AccountEditActivity_" />
+        <activity android:name=".feature.productlist.ProductListActivity_" />
+        <activity android:name=".feature.productedit.ProductEditActivity_" />
+        <activity
+            android:name=".feature.home.HomeActivity_"
+            android:label="@string/title_activity_home"/>
     </application>
 
 </manifest>

@@ -35,10 +35,11 @@ public class HomeActivity extends DaggerAppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    router.showProductList();
+                    router.closeScreen();
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     return true;
                 case R.id.navigation_notifications:
                     router.showAccountsScreen();

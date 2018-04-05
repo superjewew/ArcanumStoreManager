@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.login.LoginActivity_">
+        <activity android:name=".feature.home.HomeActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +33,7 @@
         <activity android:name=".feature.productlist.ProductListActivity_" />
         <activity android:name=".feature.productedit.ProductEditActivity_" />
         <activity
-            android:name=".feature.home.HomeActivity_"
+            android:name=".feature.login.LoginActivity_"
             android:label="@string/title_activity_home"/>
     </application>
 

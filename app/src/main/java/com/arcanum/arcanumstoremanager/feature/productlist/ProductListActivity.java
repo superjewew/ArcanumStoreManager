@@ -1,5 +1,7 @@
 package com.arcanum.arcanumstoremanager.feature.productlist;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -30,6 +32,9 @@ public class ProductListActivity extends DaggerAppCompatActivity implements Prod
     @ViewById(R.id.product_list)
     RecyclerView productList;
 
+    @ViewById(R.id.navigation)
+    BottomNavigationView navigation;
+
     @Inject
     ProductListContract.Presenter mPresenter;
 
@@ -38,8 +43,33 @@ public class ProductListActivity extends DaggerAppCompatActivity implements Prod
 
     private ProductListAdapter adapter;
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    router.showHomeScreen();
+                    router.closeScreen();
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    return true;
+                case R.id.navigation_dashboard:
+                    productList.scrollToPosition(0);
+                    return true;
+                case R.id.navigation_notifications:
+                    router.showAccountsScreen();
+                    router.closeScreen();
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    return true;
+            }
+            return false;
+        }
+    };
+
     @AfterViews
     public void initAfterViews() {
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         productList.setLayoutManager(new LinearLayoutManager(this));
         mPresenter.loadProducts();
     }

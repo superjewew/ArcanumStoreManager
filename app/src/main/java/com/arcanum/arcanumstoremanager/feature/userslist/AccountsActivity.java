@@ -58,6 +58,9 @@ public class AccountsActivity extends DaggerAppCompatActivity implements Account
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     return true;
                 case R.id.navigation_dashboard:
+                    router.showProductList();
+                    router.closeScreen();
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     return true;
                 case R.id.navigation_notifications:
                     accountList.scrollToPosition(0);

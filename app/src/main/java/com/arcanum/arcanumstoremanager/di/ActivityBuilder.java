@@ -4,6 +4,8 @@ import com.arcanum.arcanumstoremanager.feature.attendance.AttendanceActivityModu
 import com.arcanum.arcanumstoremanager.feature.attendance.AttendanceActivity_;
 import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardActivityModule;
 import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardActivity_;
+import com.arcanum.arcanumstoremanager.feature.home.HomeActivityModule;
+import com.arcanum.arcanumstoremanager.feature.home.HomeActivity_;
 import com.arcanum.arcanumstoremanager.feature.logged.LoggedActivityModule;
 import com.arcanum.arcanumstoremanager.feature.logged.LoggedActivity_;
 import com.arcanum.arcanumstoremanager.feature.login.LoginActivityModule;
@@ -60,4 +62,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = ProductEditActivityModule.class)
     abstract ProductEditActivity_ bindProductEdittActivity();
+
+    @ContributesAndroidInjector(modules = HomeActivityModule.class)
+    abstract HomeActivity_ bindHomeActivity();
 }

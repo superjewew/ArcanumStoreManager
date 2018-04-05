@@ -1,20 +1,26 @@
 package com.arcanum.arcanumstoremanager.feature.home;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.arcanum.arcanumstoremanager.R;
+import com.arcanum.arcanumstoremanager.base.Router;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import javax.inject.Inject;
+
+import dagger.android.support.DaggerAppCompatActivity;
+
 @EActivity(R.layout.activity_home)
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends DaggerAppCompatActivity {
+
+    @Inject
+    Router router;
 
     @ViewById(R.id.message)
     TextView mTextMessage;
@@ -35,7 +41,9 @@ public class HomeActivity extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                    router.showAccountsScreen();
+                    router.closeScreen();
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     return true;
             }
             return false;

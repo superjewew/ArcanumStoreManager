@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.arcanum.arcanumstoremanager.base.Router;
 import com.arcanum.arcanumstoremanager.feature.attendance.AttendanceActivity_;
 import com.arcanum.arcanumstoremanager.feature.dashboard.DashboardActivity_;
+import com.arcanum.arcanumstoremanager.feature.home.HomeActivity_;
 import com.arcanum.arcanumstoremanager.feature.logged.LoggedActivity_;
 import com.arcanum.arcanumstoremanager.feature.productedit.ProductEditActivity_;
 import com.arcanum.arcanumstoremanager.feature.productlist.ProductListActivity_;
@@ -83,5 +84,10 @@ public class RouterImpl implements Router {
     @Override
     public void showAccountEditScreen(String username) {
         AccountEditActivity_.intent(activity).username(username).start();
+    }
+
+    @Override
+    public void showHomeScreen() {
+        HomeActivity_.intent(activity).start();
     }
 }

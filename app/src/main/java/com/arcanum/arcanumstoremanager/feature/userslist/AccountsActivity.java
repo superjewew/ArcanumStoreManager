@@ -3,6 +3,7 @@ package com.arcanum.arcanumstoremanager.feature.userslist;
 import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -32,6 +33,9 @@ public class AccountsActivity extends DaggerAppCompatActivity implements Account
     @ViewById(R.id.account_list)
     RecyclerView accountList;
 
+    @ViewById(R.id.navigation)
+    BottomNavigationView navigation;
+
     @Inject
     AccountsContract.Presenter mPresenter;
 
@@ -42,6 +46,27 @@ public class AccountsActivity extends DaggerAppCompatActivity implements Account
 
     private List<User> users;
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    router.showHomeScreen();
+                    router.closeScreen();
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    return true;
+                case R.id.navigation_dashboard:
+                    return true;
+                case R.id.navigation_notifications:
+                    accountList.scrollToPosition(0);
+                    return true;
+            }
+            return false;
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +74,10 @@ public class AccountsActivity extends DaggerAppCompatActivity implements Account
 
     @AfterViews
     public void initAfterView() {
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
         accountList.setLayoutManager(new LinearLayoutManager(this));
+
         mPresenter.loadData();
     }
 
